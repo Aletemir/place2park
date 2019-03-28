@@ -2,18 +2,15 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\Parking;
+use App\Entity\Type;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class ParkingController extends AbstractController
+/**
+ * @Route("/parking")
+ */
+class ParkingController extends BaseController
 {
-    /**
-     * @Route("/parking", name="parking")
-     */
-    public function index()
-    {
-        return $this->render('parking/index.html.twig', [
-            'controller_name' => 'ParkingController',
-        ]);
-    }
+
 }

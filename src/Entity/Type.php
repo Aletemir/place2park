@@ -12,6 +12,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Type
 {
+
+    const SOUT = 'souterrain';
+    const GARAGE = 'garage privé';
     /**
      * @var int
      *

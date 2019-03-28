@@ -64,7 +64,7 @@ class User
     private $password;
 
     /**
-     * @var string
+     * @var string|null
      *
      * @ORM\Column(name="picture", type="string", length=500, nullable=false)
      */
