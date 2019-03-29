@@ -12,9 +12,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Type
 {
-
-    const SOUT = 'souterrain';
-    const GARAGE = 'garage privé';
     /**
      * @var int
      *
@@ -39,12 +36,10 @@ class Type
         return $this->id;
     }
 
-    /**
-     * @param int $id
-     */
-    public function setId(int $id): void
+    public function setId(int $id): self
     {
         $this->id = $id;
+        return $this;
     }
 
     /**
@@ -55,12 +50,10 @@ class Type
         return $this->label;
     }
 
-    /**
-     * @param string $label
-     */
-    public function setLabel(string $label): void
+    public function setLabel(string $label): self
     {
         $this->label = $label;
+        return $this;
     }
 
 

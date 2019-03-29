@@ -66,7 +66,7 @@ class User
     /**
      * @var string|null
      *
-     * @ORM\Column(name="picture", type="string", length=500, nullable=false)
+     * @ORM\Column(name="picture", type="string", length=500, nullable=true)
      */
     private $picture;
 
@@ -92,12 +92,10 @@ class User
         return $this->id;
     }
 
-    /**
-     * @param int $id
-     */
-    public function setId(int $id): void
+    public function setId(int $id): self
     {
         $this->id = $id;
+        return $this;
     }
 
     /**
@@ -108,12 +106,10 @@ class User
         return $this->lastname;
     }
 
-    /**
-     * @param string $lastname
-     */
-    public function setLastname(string $lastname): void
+    public function setLastname(string $lastname): self
     {
         $this->lastname = $lastname;
+        return $this;
     }
 
     /**
@@ -124,12 +120,10 @@ class User
         return $this->firstname;
     }
 
-    /**
-     * @param string $firstname
-     */
-    public function setFirstname(string $firstname): void
+    public function setFirstname(string $firstname): self
     {
         $this->firstname = $firstname;
+        return $this;
     }
 
     /**
@@ -140,12 +134,10 @@ class User
         return $this->birthdate;
     }
 
-    /**
-     * @param \DateTime $birthdate
-     */
-    public function setBirthdate(\DateTime $birthdate): void
+    public function setBirthdate(\DateTime $birthdate): self
     {
         $this->birthdate = $birthdate;
+        return $this;
     }
 
     /**
@@ -156,12 +148,10 @@ class User
         return $this->adress;
     }
 
-    /**
-     * @param string $adress
-     */
-    public function setAdress(string $adress): void
+    public function setAdress(string $adress): self
     {
         $this->adress = $adress;
+        return $this;
     }
 
     /**
@@ -172,12 +162,10 @@ class User
         return $this->email;
     }
 
-    /**
-     * @param string $email
-     */
-    public function setEmail(string $email): void
+    public function setEmail(string $email): self
     {
         $this->email = $email;
+        return $this;
     }
 
     /**
@@ -188,28 +176,24 @@ class User
         return $this->password;
     }
 
-    /**
-     * @param string $password
-     */
-    public function setPassword(string $password): void
+    public function setPassword(string $password): self
     {
         $this->password = $password;
+        return $this;
     }
 
     /**
-     * @return string
+     * @return null|string
      */
-    public function getPicture(): string
+    public function getPicture(): ?string
     {
         return $this->picture;
     }
 
-    /**
-     * @param string $picture
-     */
-    public function setPicture(string $picture): void
+    public function setPicture(?string $picture): self
     {
         $this->picture = $picture;
+        return $this;
     }
 
     /**
@@ -220,12 +204,10 @@ class User
         return $this->rib;
     }
 
-    /**
-     * @param null|string $rib
-     */
-    public function setRib(?string $rib): void
+    public function setRib(?string $rib): self
     {
         $this->rib = $rib;
+        return $this;
     }
 
     /**
@@ -236,14 +218,12 @@ class User
         return $this->iban;
     }
 
-    /**
-     * @param null|string $iban
-     */
-    public function setIban(?string $iban): void
+    public function setIban(?string $iban): self
     {
         $this->iban = $iban;
-    }
 
+        return $this;
+    }
 
 
 }

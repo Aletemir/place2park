@@ -22,16 +22,16 @@ class Disponibility
     private $id;
 
     /**
-     * @var DateTime
+     * @var \DateTime
      *
-     * @ORM\Column(name="date_start", type="datetime", nullable=false)
+     * @ORM\Column(name="date_start", type="date", nullable=false)
      */
     private $dateStart;
 
     /**
-     * @var DateTime
+     * @var \DateTime
      *
-     * @ORM\Column(name="date_end", type="datetime", nullable=false)
+     * @ORM\Column(name="date_end", type="date", nullable=false)
      */
     private $dateEnd;
 
@@ -45,7 +45,7 @@ class Disponibility
     /**
      * @var Parking
      *
-     * @ORM\ManyToOne(targetEntity="Parking")
+     * @ORM\ManyToOne(targetEntity="Parking", inversedBy="disponibility")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="parking_id", referencedColumnName="id")
      * })
@@ -70,44 +70,41 @@ class Disponibility
         return $this->id;
     }
 
-    /**
-     * @param int $id
-     */
-    public function setId(int $id): void
+    public function setId(int $id): self
     {
         $this->id = $id;
+        return $this;
     }
 
     /**
-     * @return DateTime
+     * @return \DateTime
      */
-    public function getDateStart(): DateTime
+    public function getDateStart(): \DateTime
     {
         return $this->dateStart;
     }
 
-    /**
-     * @param DateTime $dateStart
-     */
-    public function setDateStart(DateTime $dateStart): void
+
+    public function setDateStart(\DateTime $dateStart): self
     {
         $this->dateStart = $dateStart;
+
+        return $this;
     }
 
     /**
-     * @return DateTime
+     * @return \DateTime
      */
-    public function getDateEnd(): DateTime
+    public function getDateEnd(): \DateTime
     {
         return $this->dateEnd;
     }
 
-    /**
-     * @param DateTime $dateEnd
-     */
-    public function setDateEnd(DateTime $dateEnd): void
+    public function setDateEnd(\DateTime $dateEnd): self
     {
         $this->dateEnd = $dateEnd;
+
+        return $this;
     }
 
     /**
@@ -118,12 +115,11 @@ class Disponibility
         return $this->price;
     }
 
-    /**
-     * @param int $price
-     */
-    public function setPrice(int $price): void
+
+    public function setPrice(int $price): self
     {
         $this->price = $price;
+        return $this;
     }
 
     /**
@@ -134,12 +130,12 @@ class Disponibility
         return $this->parking;
     }
 
-    /**
-     * @param Parking $parking
-     */
-    public function setParking(Parking $parking): void
+
+    public function setParking(Parking $parking): self
     {
         $this->parking = $parking;
+
+        return $this;
     }
 
     /**
@@ -150,14 +146,12 @@ class Disponibility
         return $this->reservation;
     }
 
-    /**
-     * @param Reservation $reservation
-     */
-    public function setReservation(Reservation $reservation): void
+    public function setReservation(Reservation $reservation): self
     {
         $this->reservation = $reservation;
-    }
 
+        return $this;
+    }
 
 
 }

@@ -91,12 +91,11 @@ class ViewsUser
         return $this->id;
     }
 
-    /**
-     * @param int $id
-     */
-    public function setId(int $id): void
+    public function setId(int $id): self
     {
         $this->id = $id;
+
+        return $this;
     }
 
     /**
@@ -107,12 +106,11 @@ class ViewsUser
         return $this->noteUser;
     }
 
-    /**
-     * @param int $noteUser
-     */
-    public function setNoteUser(int $noteUser): void
+    public function setNoteUser(int $noteUser): self
     {
         $this->noteUser = $noteUser;
+
+        return $this;
     }
 
     /**
@@ -123,12 +121,11 @@ class ViewsUser
         return $this->comment;
     }
 
-    /**
-     * @param null|string $comment
-     */
-    public function setComment(?string $comment): void
+    public function setComment(?string $comment): self
     {
         $this->comment = $comment;
+
+        return $this;
     }
 
     /**
@@ -139,12 +136,11 @@ class ViewsUser
         return $this->creationDate;
     }
 
-    /**
-     * @param \DateTime $creationDate
-     */
-    public function setCreationDate(\DateTime $creationDate): void
+    public function setCreationDate(\DateTime $creationDate): self
     {
         $this->creationDate = $creationDate;
+
+        return $this;
     }
 
     /**
@@ -155,12 +151,11 @@ class ViewsUser
         return $this->noteAmability;
     }
 
-    /**
-     * @param int|null $noteAmability
-     */
-    public function setNoteAmability(?int $noteAmability): void
+    public function setNoteAmability(?int $noteAmability): self
     {
         $this->noteAmability = $noteAmability;
+
+        return $this;
     }
 
     /**
@@ -171,12 +166,11 @@ class ViewsUser
         return $this->noteWellBeing;
     }
 
-    /**
-     * @param int|null $noteWellBeing
-     */
-    public function setNoteWellBeing(?int $noteWellBeing): void
+    public function setNoteWellBeing(?int $noteWellBeing): self
     {
         $this->noteWellBeing = $noteWellBeing;
+
+        return $this;
     }
 
     /**
@@ -187,12 +181,11 @@ class ViewsUser
         return $this->notePayment;
     }
 
-    /**
-     * @param int|null $notePayment
-     */
-    public function setNotePayment(?int $notePayment): void
+    public function setNotePayment(?int $notePayment): self
     {
         $this->notePayment = $notePayment;
+
+        return $this;
     }
 
     /**
@@ -203,12 +196,11 @@ class ViewsUser
         return $this->user;
     }
 
-    /**
-     * @param User $user
-     */
-    public function setUser(User $user): void
+    public function setUser(User $user): self
     {
         $this->user = $user;
+
+        return $this;
     }
 
     /**
@@ -219,14 +211,12 @@ class ViewsUser
         return $this->receiver;
     }
 
-    /**
-     * @param User $receiver
-     */
-    public function setReceiver(User $receiver): void
+    public function setReceiver(User $receiver): self
     {
         $this->receiver = $receiver;
-    }
 
+        return $this;
+    }
 
 
 }

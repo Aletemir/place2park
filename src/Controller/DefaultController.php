@@ -2,22 +2,25 @@
 
 namespace App\Controller;
 
-use Symfony\Component\HttpFoundation\Response;
+use App\Entity\Parking;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * Class DefaultController
+ * @package App/Controller
+ */
 
 class DefaultController extends BaseController
 {
     /**
      * @Route("/", name="homepage")
      */
-    public function homepage(): Response
+    public function homepage()
     {
         return $this->render('default/homepage.html.twig');
     }
 
 
-    
 
 
 }

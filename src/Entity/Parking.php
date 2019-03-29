@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -38,7 +39,7 @@ class Parking
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=255, nullable=false)
+     * @ORM\Column(name="description", type="string", length=500, nullable=false)
      */
     private $description;
 
@@ -78,6 +79,20 @@ class Parking
     private $longitude;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_at", type="datetime", length=255, nullable=false)
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime|null
+     *
+     * @ORM\Column(name="update_at", type="datetime", length=255, nullable=true)
+     */
+    private $updateAt;
+
+    /**
      * @var Type
      *
      * @ORM\ManyToOne(targetEntity="Type")
@@ -98,6 +113,17 @@ class Parking
     private $user;
 
     /**
+     * @ORM\OneToMany(targetEntity="Disponibility", mappedBy="parking")
+     */
+    private $disponibility;
+
+
+    public function __construct()
+    {
+        $this->disponibility = new ArrayCollection();
+    }
+
+    /**
      * @return int
      */
     public function getId(): int
@@ -105,12 +131,10 @@ class Parking
         return $this->id;
     }
 
-    /**
-     * @param int $id
-     */
-    public function setId(int $id): void
+    public function setId(int $id): self
     {
         $this->id = $id;
+        return $this;
     }
 
     /**
@@ -121,12 +145,10 @@ class Parking
         return $this->title;
     }
 
-    /**
-     * @param string $title
-     */
-    public function setTitle(string $title): void
+    public function setTitle(string $title): self
     {
         $this->title = $title;
+        return $this;
     }
 
     /**
@@ -137,12 +159,10 @@ class Parking
         return $this->picture;
     }
 
-    /**
-     * @param string $picture
-     */
-    public function setPicture(string $picture): void
+    public function setPicture(string $picture): self
     {
         $this->picture = $picture;
+        return $this;
     }
 
     /**
@@ -153,12 +173,10 @@ class Parking
         return $this->description;
     }
 
-    /**
-     * @param string $description
-     */
-    public function setDescription(string $description): void
+    public function setDescription(string $description): self
     {
         $this->description = $description;
+        return $this;
     }
 
     /**
@@ -169,12 +187,10 @@ class Parking
         return $this->city;
     }
 
-    /**
-     * @param string $city
-     */
-    public function setCity(string $city): void
+    public function setCity(string $city): self
     {
         $this->city = $city;
+        return $this;
     }
 
     /**
@@ -185,12 +201,10 @@ class Parking
         return $this->district;
     }
 
-    /**
-     * @param string $district
-     */
-    public function setDistrict(string $district): void
+    public function setDistrict(string $district): self
     {
         $this->district = $district;
+        return $this;
     }
 
     /**
@@ -201,12 +215,10 @@ class Parking
         return $this->street;
     }
 
-    /**
-     * @param null|string $street
-     */
-    public function setStreet(?string $street): void
+    public function setStreet(?string $street): self
     {
         $this->street = $street;
+        return $this;
     }
 
     /**
@@ -217,12 +229,10 @@ class Parking
         return $this->latitude;
     }
 
-    /**
-     * @param string $latitude
-     */
-    public function setLatitude(string $latitude): void
+    public function setLatitude(string $latitude): self
     {
         $this->latitude = $latitude;
+        return $this;
     }
 
     /**
@@ -233,12 +243,10 @@ class Parking
         return $this->longitude;
     }
 
-    /**
-     * @param string $longitude
-     */
-    public function setLongitude(string $longitude): void
+    public function setLongitude(string $longitude): self
     {
         $this->longitude = $longitude;
+        return $this;
     }
 
     /**
@@ -249,12 +257,11 @@ class Parking
         return $this->type;
     }
 
-    /**
-     * @param Type $type
-     */
-    public function setType(Type $type): void
+
+    public function setType(Type $type): self
     {
         $this->type = $type;
+        return $this;
     }
 
     /**
@@ -265,12 +272,52 @@ class Parking
         return $this->user;
     }
 
-    /**
-     * @param User $user
-     */
-    public function setUser(User $user): void
+
+    public function setUser(User $user): self
     {
         $this->user = $user;
+        return $this;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getCreatedAt(): \DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+        return $this;
+    }
+
+    public function getUpdateAt(): ?\DateTimeInterface
+    {
+        return $this->updateAt;
+    }
+
+    public function setUpdateAt(?\DateTimeInterface $updateAt): self
+    {
+        $this->updateAt = $updateAt;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDisponibility()
+    {
+        return $this->disponibility;
+    }
+
+
+    public function setDisponibility($disponibility): self
+    {
+        $this->disponibility = $disponibility;
+        return $this;
     }
 
 

@@ -24,14 +24,14 @@ class Reservation
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date_start", type="datetime", nullable=false)
+     * @ORM\Column(name="date_start", type="date", nullable=false)
      */
     private $dateStart;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date_end", type="datetime", nullable=false)
+     * @ORM\Column(name="date_end", type="date", nullable=false)
      */
     private $dateEnd;
 
@@ -60,12 +60,10 @@ class Reservation
         return $this->id;
     }
 
-    /**
-     * @param int $id
-     */
-    public function setId(int $id): void
+    public function setId(int $id): self
     {
         $this->id = $id;
+        return $this;
     }
 
     /**
@@ -76,12 +74,10 @@ class Reservation
         return $this->dateStart;
     }
 
-    /**
-     * @param \DateTime $dateStart
-     */
-    public function setDateStart(\DateTime $dateStart): void
+    public function setDateStart(\DateTime $dateStart): self
     {
         $this->dateStart = $dateStart;
+        return $this;
     }
 
     /**
@@ -92,12 +88,10 @@ class Reservation
         return $this->dateEnd;
     }
 
-    /**
-     * @param \DateTime $dateEnd
-     */
-    public function setDateEnd(\DateTime $dateEnd): void
+    public function setDateEnd(\DateTime $dateEnd): self
     {
         $this->dateEnd = $dateEnd;
+        return $this;
     }
 
     /**
@@ -108,12 +102,10 @@ class Reservation
         return $this->paid;
     }
 
-    /**
-     * @param bool $paid
-     */
-    public function setPaid(bool $paid): void
+    public function setPaid(bool $paid): self
     {
         $this->paid = $paid;
+        return $this;
     }
 
     /**
@@ -124,12 +116,10 @@ class Reservation
         return $this->user;
     }
 
-    /**
-     * @param User $user
-     */
-    public function setUser(User $user): void
+    public function setUser(User $user): self
     {
         $this->user = $user;
+        return $this;
     }
 
 

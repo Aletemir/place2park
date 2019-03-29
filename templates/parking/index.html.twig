@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+{% for parking in parkings %}
+    <article>
+        {{ include('parking/card.html.twig') }}
+    </article>
+    {% endfor %}
+{% endblock %}

@@ -28,7 +28,7 @@ class UserFixtures extends Fixture
         $user2 = new User();
         $user2->setFirstname('Broxon');
         $user2->setLastname('Conrad');
-        $user2->setBirthdate(new \DateTime('22/03/2001'));
+        $user2->setBirthdate(new \DateTime('22-03-2001'));
         $user2->setAdress('122 boulevard des airs');
         $user2->setEmail('jojo@bernard.net');
         $user2->setPassword('Ricky');
@@ -39,7 +39,7 @@ class UserFixtures extends Fixture
         $user3 = new User();
         $user3->setFirstname('Troump');
         $user3->setLastname('Danold');
-        $user3->setBirthdate(new \DateTime('12/05/1902'));
+        $user3->setBirthdate(new \DateTime('12-05-1902'));
         $user3->setAdress('23 avenue des rigadons');
         $user3->setEmail('troump.d@lmb.us');
         $user3->setPassword('AmagodOeRt');
@@ -51,7 +51,7 @@ class UserFixtures extends Fixture
         $user4 = new User();
         $user4->setFirstname('Lirou');
         $user4->setLastname('Claude');
-        $user4->setBirthdate(new \DateTime('13/01/1983'));
+        $user4->setBirthdate(new \DateTime('13-01-1983'));
         $user4->setAdress('13 rue des grogs');
         $user4->setEmail('lircla@lbdr.com');
         $user4->setPassword('mamamanlaplubell');

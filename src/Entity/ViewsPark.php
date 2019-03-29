@@ -64,7 +64,7 @@ class ViewsPark
     private $notePrice;
 
     /**
-     * @var \Parking
+     * @var Parking
      *
      * @ORM\ManyToOne(targetEntity="Parking")
      * @ORM\JoinColumns({
@@ -91,12 +91,12 @@ class ViewsPark
         return $this->id;
     }
 
-    /**
-     * @param int $id
-     */
-    public function setId(int $id): void
+
+    public function setId(int $id): self
     {
         $this->id = $id;
+
+        return $this;
     }
 
     /**
@@ -107,12 +107,11 @@ class ViewsPark
         return $this->notePark;
     }
 
-    /**
-     * @param int $notePark
-     */
-    public function setNotePark(int $notePark): void
+    public function setNotePark(int $notePark): self
     {
         $this->notePark = $notePark;
+
+        return $this;
     }
 
     /**
@@ -123,12 +122,11 @@ class ViewsPark
         return $this->comment;
     }
 
-    /**
-     * @param null|string $comment
-     */
-    public function setComment(?string $comment): void
+    public function setComment(?string $comment): self
     {
         $this->comment = $comment;
+
+        return $this;
     }
 
     /**
@@ -139,12 +137,11 @@ class ViewsPark
         return $this->creationDate;
     }
 
-    /**
-     * @param string $creationDate
-     */
-    public function setCreationDate(string $creationDate): void
+    public function setCreationDate(string $creationDate): self
     {
         $this->creationDate = $creationDate;
+
+        return $this;
     }
 
     /**
@@ -155,12 +152,11 @@ class ViewsPark
         return $this->noteAccess;
     }
 
-    /**
-     * @param int|null $noteAccess
-     */
-    public function setNoteAccess(?int $noteAccess): void
+    public function setNoteAccess(?int $noteAccess): self
     {
         $this->noteAccess = $noteAccess;
+
+        return $this;
     }
 
     /**
@@ -171,12 +167,11 @@ class ViewsPark
         return $this->noteCleaning;
     }
 
-    /**
-     * @param int|null $noteCleaning
-     */
-    public function setNoteCleaning(?int $noteCleaning): void
+    public function setNoteCleaning(?int $noteCleaning): self
     {
         $this->noteCleaning = $noteCleaning;
+
+        return $this;
     }
 
     /**
@@ -187,28 +182,26 @@ class ViewsPark
         return $this->notePrice;
     }
 
-    /**
-     * @param int|null $notePrice
-     */
-    public function setNotePrice(?int $notePrice): void
+    public function setNotePrice(?int $notePrice): self
     {
         $this->notePrice = $notePrice;
+
+        return $this;
     }
 
     /**
-     * @return \Parking
+     * @return Parking
      */
-    public function getParking(): \Parking
+    public function getParking(): Parking
     {
         return $this->parking;
     }
 
-    /**
-     * @param \Parking $parking
-     */
-    public function setParking(\Parking $parking): void
+    public function setParking(Parking $parking): self
     {
         $this->parking = $parking;
+
+        return $this;
     }
 
     /**
@@ -219,14 +212,12 @@ class ViewsPark
         return $this->user;
     }
 
-    /**
-     * @param User $user
-     */
-    public function setUser(User $user): void
+    public function setUser(User $user): self
     {
         $this->user = $user;
-    }
 
+        return $this;
+    }
 
 
 }

@@ -3,14 +3,29 @@
 namespace App\Controller;
 
 use App\Entity\Parking;
-use App\Entity\Type;
-use Symfony\Component\HttpFoundation\Response;
+use http\Env\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/parking")
+ *
  */
 class ParkingController extends BaseController
 {
+    /**
+     * @Route("/park" , name="show_parks")
+     */
+    public function showParks()
+    {
+        $parkings = $this->getDoctrine()->getRepository(Parking::class)->findAll();
+        dump($parkings);
+        return $this->render('parking/index.html.twig', ['parkings' => $parkings]);
+    }
 
+    /**
+     * @Route("/park/{id}
+     */
+    public function showOnePark(Parking $parking)
+    {
+        $park = $this->getDoctrine()->getRepository(Parking::class)->showPark(['id' => $parking->getId()]);
+    }
 }
