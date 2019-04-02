@@ -15,7 +15,7 @@ class ParkingFixtures extends Fixture implements DependentFixtureInterface
     {
         $park1 = new Parking();
         $park1->setTitle('Petit Parking');
-        $park1->setPicture('park-1');
+        $park1->setPicture('park-1.jpg');
         $park1->setDescription('Ça sounds good, tu vois au passage qu\'il n\'y a rien de concret car là, j\'ai un chien en ce moment à côté de moi et je le caresse.');
         $park1->setCity('Rennes');
         $park1->setDistrict('Le maille');
@@ -24,14 +24,14 @@ class ParkingFixtures extends Fixture implements DependentFixtureInterface
         $park1->setUser($this->getReference('user-1'));
         $park1->setLatitude(48.1119800);
         $park1->setLongitude(-1.6742900);
-        $park1->setCreatedAt(new \DateTime('now'));
+        $park1->setCreatedAt((new \DateTime('now'))->add(new \DateInterval('P10D')));
         $manager->persist($park1);
         $this->setReference('park-1', $park1);
 
 
         $park2 = new Parking();
         $park2->setTitle('Garage à disposition');
-        $park2->setPicture('park-2');
+        $park2->setPicture('park-2.jpg');
         $park2->setDescription('Tu comprends, tu vois au passage qu\'il n\'y a rien de concret car on vit dans une réalité qu\'on a créée et que j\'appelle illusion.');
         $park2->setCity('Rennes');
         $park2->setDistrict('Villejean');

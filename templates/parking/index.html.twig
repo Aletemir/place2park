@@ -1,8 +1,15 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+
+    <div class="header_parkings-page d-flex">
+        <div class="header_title_name">PLACE 2 PARK</div>
+
+
+    </div>
+
 {% for parking in parkings %}
-    <article>
+    <article class="d-flex ">
         {{ include('parking/card.html.twig') }}
     </article>
     {% endfor %}

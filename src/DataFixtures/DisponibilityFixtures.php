@@ -12,8 +12,8 @@ class DisponibilityFixtures extends Fixture implements DependentFixtureInterface
     public function load(ObjectManager $manager)
     {
         $parkDispo1 = new Disponibility();
-        $parkDispo1->setDateStart(new \DateTime('12-03-2018'));
-        $parkDispo1->setDateEnd(new \DateTime('29-03-2019'));
+        $parkDispo1->setDateStart((new \DateTime('now'))->add(new \DateInterval('P10D')));
+        $parkDispo1->setDateEnd((new \DateTime('now'))->add(new \DateInterval('P30D')));
         $parkDispo1->setParking($this->getReference('park-1'));
         $parkDispo1->setReservation($this->getReference('resa-1'));
         $parkDispo1->setPrice(12);

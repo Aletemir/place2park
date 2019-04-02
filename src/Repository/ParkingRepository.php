@@ -1,25 +1,33 @@
 <?php
 
-
 namespace App\Repository;
 
-use App\Entity\Parking;
 use Doctrine\ORM\EntityRepository;
+
 
 class ParkingRepository extends EntityRepository
 {
-    public function showPark(Parking $parking): array
+    public function findAllWithPrice(): array
     {
         $qb = $this->createQueryBuilder('p');
 
         $qb = $qb->select('p')
-            ->innerJoin('p.disponibility', 'd')
-            ->where($qb->expr()->eq('d.id', ':price'));
+            ->addSelect('MIN(d.price) AS price')
+            ->innerJoin('p.disponibilities', 'd')
+            ->where($qb->expr()->gt('d.dateStart', ':now'))
+            ->setParameter(':now', new \DateTime());
 
-        return $qb->setParameter(':price', $parking->getId())
-            ->getQuery()
-            ->getResult();
+        $parkings = $qb->getQuery()->getResult();
+
+        $result = [];
+        foreach ($parkings as $parking) {
+            $parking[0]->price = $parking["price"];
+            $result[] = $parking[0];
+        }
+
+        return $result;
     }
 
+// TODO : try to join Parkin and Disponibility to get the price
 
 }

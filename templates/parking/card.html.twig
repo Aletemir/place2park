@@ -1,12 +1,13 @@
-<div class="card" style="width: 18rem;">
-    {#<img src="{{ asset('uploads/' ~ parking.picture) }}" class="card-img-top" alt="{{ parking }}">#}
+<div class="card d-flex "  style="width: 18rem;">
+    <img src="{{ asset('uploads/' ~ parking.picture) }}" class="card-img-top" alt="{{ parking.title }}">
     <div class="card-body">
         <h3 class="card-title">{{ parking.title }}</h3>
         <div class="card-text">
-            {#<div class="parking_price">{{ parking.disponibility.price }} €/jour</div>#}
+            <div class="parking_price">{{ parking.price }} €/jour</div>
             <div class="parking_type">{{ parking.type.label }}</div>
             <div class="parking_city">{{ parking.city }}</div>
             <div class="parking_district">{{ parking.district }}</div>
+            {#<div class="parking_created-at">{{ parking.createdAt }}</div>#}
         </div>
         <a href="{{ path('show_park', {'id': parking.id }) }}" class="btn btn-primary">VOIR PLUS</a>
     </div>

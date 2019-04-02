@@ -3,13 +3,14 @@
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\HttpFoundation\File\File;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Parking
  *
  * @ORM\Table(name="parking", uniqueConstraints={@ORM\UniqueConstraint(name="id_UNIQUE", columns={"id"})}, indexes={@ORM\Index(name="fk_parking_type_idx", columns={"type_id"}), @ORM\Index(name="fk_parking_user1_idx", columns={"user_id"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\ParkingRepository")
  */
 class Parking
 {
@@ -30,11 +31,18 @@ class Parking
     private $title;
 
     /**
-     * @var string
+     *  @var string|null
      *
-     * @ORM\Column(name="picture", type="string", length=255, nullable=false)
+     * @ORM\Column(name="picture", type="string", length=255, nullable=true)
+     *
      */
     private $picture;
+
+    /**
+     * @var File
+     */
+    private $pictureFile;
+
 
     /**
      * @var string
@@ -115,12 +123,14 @@ class Parking
     /**
      * @ORM\OneToMany(targetEntity="Disponibility", mappedBy="parking")
      */
-    private $disponibility;
+    private $disponibilities;
+
+    public $price;
 
 
     public function __construct()
     {
-        $this->disponibility = new ArrayCollection();
+        $this->disponibilities = new ArrayCollection();
     }
 
     /**
@@ -159,10 +169,34 @@ class Parking
         return $this->picture;
     }
 
-    public function setPicture(string $picture): self
+    /**
+     * @param null|string $picture
+     * @return Parking
+     */
+    public function setPicture(?string $picture): Parking
     {
         $this->picture = $picture;
         return $this;
+    }
+
+    /**
+     * @return null|File
+     */
+    public function getpictureFile(): ?File
+    {
+        return $this->pictureFile;
+    }
+
+    /**
+     * @param File|null $picture
+     */
+    public function setpictureFile(File $picture = null)
+    {
+        $this->pictureFile = $picture;
+
+        if ($picture) {
+            $this->updatedAt = new \DateTime('now');
+        }
     }
 
     /**
@@ -308,17 +342,17 @@ class Parking
     /**
      * @return mixed
      */
-    public function getDisponibility()
+    public function getDisponibilities()
     {
-        return $this->disponibility;
+        return $this->disponibilities;
     }
 
 
-    public function setDisponibility($disponibility): self
+    public function setDisponibilities($disponibilities): self
     {
-        $this->disponibility = $disponibility;
+        $this->disponibilities = $disponibilities;
         return $this;
     }
 
-
 }
+

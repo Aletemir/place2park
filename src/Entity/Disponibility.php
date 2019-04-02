@@ -45,10 +45,8 @@ class Disponibility
     /**
      * @var Parking
      *
-     * @ORM\ManyToOne(targetEntity="Parking", inversedBy="disponibility")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="parking_id", referencedColumnName="id")
-     * })
+     * @ORM\ManyToOne(targetEntity="Parking", inversedBy="disponibilities")
+     * @ORM\JoinColumn(name="parking_id", referencedColumnName="id")
      */
     private $parking;
 
