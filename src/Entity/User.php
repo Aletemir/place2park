@@ -3,98 +3,103 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * User
- *
- * @ORM\Table(name="user", uniqueConstraints={@ORM\UniqueConstraint(name="email_UNIQUE", columns={"email"}), @ORM\UniqueConstraint(name="id_UNIQUE", columns={"id"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
  */
-class User
+class User implements UserInterface
 {
     /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="bigint", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
+     * @ORM\Column(type="integer")
      */
     private $id;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="lastname", type="string", length=255, nullable=false)
-     */
-    private $lastname;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="firstname", type="string", length=255, nullable=false)
+     * @ORM\Column(name="firstname", type="string", length=255)
      */
     private $firstname;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="birthdate", type="date", nullable=false)
+     * @var string
+     * @ORM\Column(name="lastname", type="string", length=255)
      */
-    private $birthdate;
+    private $lastname;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="adress", type="string", length=255, nullable=false)
-     */
-    private $adress;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="email", type="string", length=255, nullable=false)
+     * @ORM\Column(type="string", length=180, unique=true)
      */
     private $email;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="password", type="string", length=255, nullable=false)
+     * @ORM\Column(type="json")
+     */
+    private $roles = [];
+
+    /**
+     * @var string The hashed password
+     * @ORM\Column(type="string")
      */
     private $password;
 
     /**
+     * @var string
+     * @ORM\Column(name="adress", type="string", length=255)
+     */
+    private $adress;
+
+    /**
      * @var string|null
-     *
-     * @ORM\Column(name="picture", type="string", length=500, nullable=true)
+     * @ORM\Column(name="picture", type="string", length=255, nullable=true)
      */
     private $picture;
 
     /**
      * @var string|null
-     *
      * @ORM\Column(name="rib", type="string", length=30, nullable=true)
      */
     private $rib;
 
     /**
      * @var string|null
-     *
      * @ORM\Column(name="iban", type="string", length=34, nullable=true)
      */
     private $iban;
 
-    /**
-     * @return int
-     */
-    public function getId(): int
+
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function setId(int $id): self
+    public function getEmail(): ?string
     {
-        $this->id = $id;
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFirstname(): string
+    {
+        return $this->firstname;
+    }
+
+    public function setFirstname(string $firstname): self
+    {
+        $this->firstname = $firstname;
         return $this;
     }
 
@@ -115,34 +120,6 @@ class User
     /**
      * @return string
      */
-    public function getFirstname(): string
-    {
-        return $this->firstname;
-    }
-
-    public function setFirstname(string $firstname): self
-    {
-        $this->firstname = $firstname;
-        return $this;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getBirthdate(): \DateTime
-    {
-        return $this->birthdate;
-    }
-
-    public function setBirthdate(\DateTime $birthdate): self
-    {
-        $this->birthdate = $birthdate;
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
     public function getAdress(): string
     {
         return $this->adress;
@@ -151,34 +128,6 @@ class User
     public function setAdress(string $adress): self
     {
         $this->adress = $adress;
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getEmail(): string
-    {
-        return $this->email;
-    }
-
-    public function setEmail(string $email): self
-    {
-        $this->email = $email;
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPassword(): string
-    {
-        return $this->password;
-    }
-
-    public function setPassword(string $password): self
-    {
-        $this->password = $password;
         return $this;
     }
 
@@ -221,9 +170,68 @@ class User
     public function setIban(?string $iban): self
     {
         $this->iban = $iban;
-
         return $this;
     }
 
 
+    /**
+     * A visual identifier that represents this user.
+     *
+     * @see UserInterface
+     */
+    public function getUsername(): string
+    {
+        return (string)$this->email;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
+    {
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getPassword(): string
+    {
+        return (string)$this->password;
+    }
+
+    public function setPassword(string $password): self
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getSalt()
+    {
+        // not needed when using the "bcrypt" algorithm in security.yaml
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function eraseCredentials()
+    {
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
+    }
 }

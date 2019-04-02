@@ -7,6 +7,7 @@ use Doctrine\ORM\EntityRepository;
 
 class ParkingRepository extends EntityRepository
 {
+//    allow to get the price of parkings
     public function findAllWithPrice(): array
     {
         $qb = $this->createQueryBuilder('p');
@@ -28,6 +29,5 @@ class ParkingRepository extends EntityRepository
         return $result;
     }
 
-// TODO : try to join Parkin and Disponibility to get the price
 
 }
