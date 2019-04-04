@@ -4,20 +4,36 @@
 {% endblock %}
 {% block body %}
     <div class="header_homepage d-flex flex-wrap">
-        <div class="header_homepage_cover-img">
             <div class="header_button-top d-flex align-items-start w-100 flex-wrap justify-content-end">
-                <a href="" class="header_button_login btn">
+                {% if app.user %}
+                {% for user in users %}
+                <div class="user_infos d-flex justify-content-end">
+
+                    {% if app.user.picture %}
+                        <img  class="user_picture" src="{{ asset('uploads/' ~ user.picture ) }}" alt=" ">
+                    {% else %}
+                        <img class="user_picture user_picture-anonym" src="uploads/anonym_user.png" alt="">
+                        {% endif %}
+                    <div class="user_name">
+                        <p>{{ user.firstname }} {{ user.lastname }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+                <a class="header_button_user-profil btn btn-primary" href="">Mon profil</a>
+                <a class="header_button_user-profil btn btn-danger" href="{{ path('app_logout') }}">Déco</a>
+
+                {% else %}
+                <a href="{{ path('app_login') }}" class="header_button_login btn btn-primary">
                     SE CONNECTER
                 </a>
-                header
-                <a href="" class="header_button_signin btn">S'ENREGISTRER</a>
+                <a href="{{ path('user_registration') }}" class="header_button_signin btn btn-secondary">S'INSCRIRE</a>
             </div>
             <h1 class="header_title_name text-center w-100">PLACE 2 PARK</h1>
             <a href="" class="homepage_button_search btn btn-success">
                 CHERCHER UNE PLACE
             </a>
+            {% endif %}
         </div>
 
 
-    </div>
 {% endblock %}

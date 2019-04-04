@@ -13,28 +13,20 @@ body {
     width: 100%;
   }
 
-  &_homepage_cover-img {
-    background-color: rgba(51,120,212, 0.3);
-    opacity: 0.5;
-    width: 100%;
-
-  }
-
   &_title_name {
     color: #F3F3F3F3;
     font-family: Haettenschweiler;
     font-size: 250px;
     opacity: 1;
   }
+}
 
-  &_button_login {
-    color: green;
-    opacity: 1;
-  }
+.user {
+  &_picture{
+    width: 70px;
+    height: 70px;
+    border-radius: 50px;
 
-  &_button_signin {
-    background-color: blue;
-    opacity: 1;
   }
 }
 

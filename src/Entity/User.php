@@ -5,6 +5,8 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints\NotBlank;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -48,8 +50,15 @@ class User implements UserInterface
     private $password;
 
     /**
+     * @NotBlank
+     * @
+     */
+    private $plainPassword;
+
+
+    /**
      * @var string
-     * @ORM\Column(name="adress", type="string", length=255)
+     * @ORM\Column(name="adress", type="string", length=255, nullable=true)
      */
     private $adress;
 
@@ -92,7 +101,7 @@ class User implements UserInterface
     /**
      * @return string
      */
-    public function getFirstname(): string
+    public function getFirstname(): ?string
     {
         return $this->firstname;
     }
@@ -106,7 +115,7 @@ class User implements UserInterface
     /**
      * @return string
      */
-    public function getLastname(): string
+    public function getLastname(): ?string
     {
         return $this->lastname;
     }
@@ -120,7 +129,7 @@ class User implements UserInterface
     /**
      * @return string
      */
-    public function getAdress(): string
+    public function getAdress(): ?string
     {
         return $this->adress;
     }
@@ -219,6 +228,20 @@ class User implements UserInterface
     }
 
     /**
+     * @param mixed $plainPassword
+     */
+    public function setPlainPassword($plainPassword)
+    {
+
+        $this->plainPassword = $plainPassword;
+    }
+
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+
+    /**
      * @see UserInterface
      */
     public function getSalt()
@@ -234,4 +257,5 @@ class User implements UserInterface
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
     }
+
 }
