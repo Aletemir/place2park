@@ -69,17 +69,18 @@ class User implements UserInterface
     private $picture;
 
     /**
-     * @var string|null
-     * @ORM\Column(name="rib", type="string", length=30, nullable=true)
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_at", type="datetime", length=255, nullable=false)
      */
-    private $rib;
+    private $createdAt;
 
     /**
-     * @var string|null
-     * @ORM\Column(name="iban", type="string", length=34, nullable=true)
+     * @var \DateTime|null
+     *
+     * @ORM\Column(name="update_at", type="datetime", length=255, nullable=true)
      */
-    private $iban;
-
+    private $updateAt;
 
     public function getId(): ?int
     {
@@ -256,6 +257,53 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+
+    public function setCreatedAt(?\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getUpdateAt(): ?string
+    {
+        return $this->updateAt;
+    }
+
+    public function setUpdateAt(?string $updateAt): self
+    {
+        $this->updateAt = $updateAt;
+
+        return $this;
+    }
+
+    /**
+     * @ORM\PrePersist()
+     */
+    public function prePersist()
+    {
+        $this->createdAt = new \DateTime();
+    }
+
+    /**
+     * @ORM\PreUpdate()
+     */
+    public function preUpdate()
+    {
+        $this->setUpdateAt(new \DateTime());
     }
 
 }
