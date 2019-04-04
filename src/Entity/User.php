@@ -7,9 +7,9 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
-
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @ORM\HasLifecycleCallbacks()
  * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
  */
 class User implements UserInterface
@@ -82,6 +82,7 @@ class User implements UserInterface
      */
     private $updateAt;
 
+
     public function getId(): ?int
     {
         return $this->id;
@@ -152,34 +153,6 @@ class User implements UserInterface
     public function setPicture(?string $picture): self
     {
         $this->picture = $picture;
-        return $this;
-    }
-
-    /**
-     * @return null|string
-     */
-    public function getRib(): ?string
-    {
-        return $this->rib;
-    }
-
-    public function setRib(?string $rib): self
-    {
-        $this->rib = $rib;
-        return $this;
-    }
-
-    /**
-     * @return null|string
-     */
-    public function getIban(): ?string
-    {
-        return $this->iban;
-    }
-
-    public function setIban(?string $iban): self
-    {
-        $this->iban = $iban;
         return $this;
     }
 

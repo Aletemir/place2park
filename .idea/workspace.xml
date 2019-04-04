@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b5ebc30a-b445-4695-adb6-10105297ceb6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/Default/homepage.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Default/homepage.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -81,7 +79,7 @@
           <entry key="env" value="18" />
           <entry key="js" value="46" />
           <entry key="json" value="1" />
-          <entry key="php" value="10034" />
+          <entry key="php" value="10253" />
           <entry key="scss" value="676" />
           <entry key="sql" value="3" />
           <entry key="twig" value="3798" />
@@ -95,7 +93,7 @@
           <entry key="CSS" value="51" />
           <entry key="JSON" value="1" />
           <entry key="JavaScript" value="46" />
-          <entry key="PHP" value="10034" />
+          <entry key="PHP" value="10253" />
           <entry key="PLAIN_TEXT" value="23" />
           <entry key="SCSS" value="676" />
           <entry key="SQL" value="3" />
@@ -116,8 +114,8 @@
           <entry key="js" value="6" />
           <entry key="json" value="5" />
           <entry key="migration_versions" value="1" />
-          <entry key="parking" value="1" />
-          <entry key="php" value="140" />
+          <entry key="parking" value="2" />
+          <entry key="php" value="141" />
           <entry key="scss" value="5" />
           <entry key="sql" value="5" />
           <entry key="test" value="1" />
@@ -132,10 +130,10 @@
         <counts>
           <entry key=".env file" value="3" />
           <entry key="CSS" value="2" />
-          <entry key="Database Element" value="6" />
+          <entry key="Database Element" value="7" />
           <entry key="JSON" value="5" />
           <entry key="JavaScript" value="6" />
-          <entry key="PHP" value="140" />
+          <entry key="PHP" value="141" />
           <entry key="PLAIN_TEXT" value="2" />
           <entry key="SCSS" value="5" />
           <entry key="SQL" value="3" />
@@ -158,8 +156,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Entity/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="151" column="5" selection-start-line="151" selection-start-column="5" selection-end-line="151" selection-end-column="5" />
+            <state relative-caret-position="-1364">
+              <caret line="11" column="30" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
               <folding>
                 <element signature="e#30#62#0#PHP" expanded="true" />
               </folding>
@@ -175,18 +173,6 @@
               <folding>
                 <element signature="e#981#990#0#Twig" expanded="true" />
                 <element signature="e#1161#1178#0#Twig" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/DataFixtures/UserFixtures.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="741">
-              <caret line="57" column="40" selection-start-line="57" selection-start-column="40" selection-end-line="57" selection-end-column="40" />
-              <folding>
-                <element signature="e#38#58#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -332,11 +318,11 @@
         <option value="$PROJECT_DIR$/templates/registration/register.html.twig" />
         <option value="$PROJECT_DIR$/templates/security/register.html.twig" />
         <option value="$PROJECT_DIR$/src/Controller/RegistrationController.php" />
-        <option value="$PROJECT_DIR$/src/Entity/User.php" />
         <option value="$PROJECT_DIR$/src/DataFixtures/UserFixtures.php" />
         <option value="$PROJECT_DIR$/src/Controller/UserController.php" />
         <option value="$PROJECT_DIR$/templates/Default/homepage.html.twig" />
         <option value="$PROJECT_DIR$/templates/user/show.html.twig" />
+        <option value="$PROJECT_DIR$/src/Entity/User.php" />
       </list>
     </option>
   </component>
@@ -471,7 +457,7 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-7" />
+    <option name="x" value="953" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
   </component>
@@ -639,12 +625,12 @@
       <workItem from="1554241024969" duration="12623000" />
       <workItem from="1554298084134" duration="1607000" />
       <workItem from="1554357304014" duration="6482000" />
-      <workItem from="1554384284024" duration="12593000" />
+      <workItem from="1554384284024" duration="15145000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="103159000" />
+    <option name="totallyTimeSpent" value="105711000" />
   </component>
   <component name="TodoView" selected-index="2">
     <todo-panel id="selected-file">
@@ -657,11 +643,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="1" side_tool="true" />
-      <window_info content_ui="combo" x="1554" y="33" width="299" height="922" id="Project" order="2" visible="true" weight="0.15085287" />
+      <window_info content_ui="combo" x="1554" y="33" width="299" height="922" id="Project" order="2" weight="0.309628" />
       <window_info anchor="bottom" id="Database Console" order="0" weight="0.329718" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" />
@@ -673,12 +658,12 @@
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Version Control" order="10" show_stripe_button="false" />
-      <window_info anchor="bottom" x="1" y="663" width="1257" height="314" id="Terminal" order="11" sideWeight="0.55490404" visible="true" weight="0.2635575" />
-      <window_info active="true" anchor="bottom" id="Event Log" order="12" sideWeight="0.44509596" side_tool="true" visible="true" weight="0.2635575" />
+      <window_info active="true" anchor="bottom" x="1" y="663" width="1257" height="314" id="Terminal" order="11" sideWeight="0.55490404" visible="true" weight="0.2635575" />
+      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.44509596" side_tool="true" visible="true" weight="0.2635575" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Database" order="3" weight="0.6706783" />
+      <window_info anchor="right" id="Database" order="3" weight="0.6705757" />
     </layout>
     <layout-to-restore>
       <window_info content_ui="combo" id="Project" order="0" weight="0.32713348" />
@@ -710,14 +695,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Entity/MigrationVersions.php" />
-    <entry file="file://$PROJECT_DIR$/src/Entity/Reservation.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
-          <caret line="61" selection-start-line="61" selection-end-line="61" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Entity/Type.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="418">
@@ -979,16 +956,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Form/UserType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="33" column="5" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
-          <folding>
-            <element signature="e#28#48#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/symfony/framework-bundle/Controller/ControllerTrait.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="218">
@@ -1025,10 +992,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="das://773c0b56-cb86-4711-bb51-48550d4ef456/schema/place2park/table/parking">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/date/date_c.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1237">
+          <caret line="2" column="10" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Entity/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="151" column="5" selection-start-line="151" selection-start-column="5" selection-end-line="151" selection-end-column="5" />
+        <state relative-caret-position="-1364">
+          <caret line="11" column="30" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
           <folding>
             <element signature="e#30#62#0#PHP" expanded="true" />
           </folding>
@@ -1042,6 +1023,16 @@
           <folding>
             <element signature="e#981#990#0#Twig" expanded="true" />
             <element signature="e#1161#1178#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Form/UserType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="33" column="5" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
+          <folding>
+            <element signature="e#28#48#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
