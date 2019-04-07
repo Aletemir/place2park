@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\HttpFoundation\File\File;
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -11,6 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="parking", uniqueConstraints={@ORM\UniqueConstraint(name="id_UNIQUE", columns={"id"})}, indexes={@ORM\Index(name="fk_parking_type_idx", columns={"type_id"}), @ORM\Index(name="fk_parking_user1_idx", columns={"user_id"})})
  * @ORM\Entity(repositoryClass="App\Repository\ParkingRepository")
+ * @Vich\Uploadable
  */
 class Parking
 {
@@ -40,6 +42,7 @@ class Parking
 
     /**
      * @var File
+     * @Vich\UploadableField(mapping="parking_pictures", fileNameProperty="picture")
      */
     private $pictureFile;
 

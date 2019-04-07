@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class UserType extends AbstractType
 {
@@ -20,6 +21,7 @@ class UserType extends AbstractType
     $builder
         ->add('firstname',TextType::class, ['label'=>'Nom'])
         ->add('lastname',TextType::class, ['label'=>'Prénom'])
+        ->add('pictureFile', VichImageType::class, ['label'=>'Photo'])
         ->add('email',EmailType::class, ['label'=>'Email'])
         ->add('plainPassword', RepeatedType::class, array(
             'type' => PasswordType::class,

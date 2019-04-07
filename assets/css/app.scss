@@ -19,8 +19,16 @@ body {
     font-size: 250px;
     opacity: 1;
   }
+
+  &_button-top {
+    height: 95px;
+  }
 }
 
+
+
+
+// if the user is logged
 .user {
   &_picture{
     width: 70px;

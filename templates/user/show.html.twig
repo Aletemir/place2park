@@ -19,10 +19,13 @@
             {% endif %}
 
             <div class="user_information-rightside">
-              <div class="user_name">{{ user.firstname }} {{ user.lastname }}</div>
-                <div class="user_adress">{{ user.adress }}</div>
+                <div class="user_name">{{ user.firstname }} {{ user.lastname }}</div>
+                {% if app.user.adress %}
+                    <div class="user_adress">{{ user.adress }}</div>
+                {% else %}
+                    <input type="text" class="user_input_adress" placeholder="Adresse" readonly>
+                {% endif %}
                 <div class="user_email">{{ user.email }}</div>
-
             </div>
 
 

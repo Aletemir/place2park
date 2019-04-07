@@ -4,13 +4,17 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Vich\UploaderBundle\Mapping\Annotation\Uploadable;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
- * @ORM\HasLifecycleCallbacks()
  * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
+ * @ORM\HasLifecycleCallbacks()
+ * @Uploadable()
  */
 class User implements UserInterface
 {
@@ -64,10 +68,16 @@ class User implements UserInterface
 
     /**
      * @var string|null
+     *
      * @ORM\Column(name="picture", type="string", length=255, nullable=true)
      */
     private $picture;
 
+    /**
+     * @Vich\UploadableField(mapping="user_pictures", fileNameProperty="picture")
+     * @var File
+     */
+    private $pictureFile;
     /**
      * @var \DateTime
      *
@@ -150,12 +160,31 @@ class User implements UserInterface
         return $this->picture;
     }
 
-    public function setPicture(?string $picture): self
+    public function setPicture($picture): self
     {
         $this->picture = $picture;
         return $this;
     }
 
+    /**
+     * @return null|File
+     */
+    public function getPictureFile(): ?File
+    {
+        return $this->pictureFile;
+    }
+
+    /**
+     * @param File|null $picture
+     */
+    public function setPictureFile(File $picture = null)
+    {
+        $this->pictureFile = $picture;
+
+        if ($picture) {
+            $this->updateAt = new \DateTime('now');
+        }
+    }
 
     /**
      * A visual identifier that represents this user.

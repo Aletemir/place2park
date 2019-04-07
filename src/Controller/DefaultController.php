@@ -19,7 +19,7 @@ class DefaultController extends BaseController
     public function homepage()
     {
         $users = $this->getDoctrine()->getRepository(User::class)->findBy(['id'=> $this->getUser()]);
-        dump($users);
+//        dump($users);
         return $this->render('default/homepage.html.twig', ['users' => $users]);
     }
 }
