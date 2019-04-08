@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -13,6 +15,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="parking", uniqueConstraints={@ORM\UniqueConstraint(name="id_UNIQUE", columns={"id"})}, indexes={@ORM\Index(name="fk_parking_type_idx", columns={"type_id"}), @ORM\Index(name="fk_parking_user1_idx", columns={"user_id"})})
  * @ORM\Entity(repositoryClass="App\Repository\ParkingRepository")
  * @Vich\Uploadable
+ * @ORM\HasLifecycleCallbacks()
  */
 class Parking
 {
@@ -50,7 +53,7 @@ class Parking
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=500, nullable=false)
+     * @ORM\Column(name="description", type="string", length=5000, nullable=false)
      */
     private $description;
 
@@ -78,14 +81,14 @@ class Parking
     /**
      * @var string
      *
-     * @ORM\Column(name="latitude", type="decimal", precision=10, scale=8, nullable=false)
+     * @ORM\Column(name="latitude", type="decimal", precision=10, scale=8, nullable=true)
      */
     private $latitude;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="longitude", type="decimal", precision=11, scale=8, nullable=false)
+     * @ORM\Column(name="longitude", type="decimal", precision=11, scale=8, nullable=true)
      */
     private $longitude;
 
@@ -153,7 +156,7 @@ class Parking
     /**
      * @return string
      */
-    public function getTitle(): string
+    public function getTitle(): ?string
     {
         return $this->title;
     }
@@ -167,7 +170,7 @@ class Parking
     /**
      * @return string
      */
-    public function getPicture(): string
+    public function getPicture(): ?string
     {
         return $this->picture;
     }
@@ -205,7 +208,7 @@ class Parking
     /**
      * @return string
      */
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
@@ -219,7 +222,7 @@ class Parking
     /**
      * @return string
      */
-    public function getCity(): string
+    public function getCity(): ?string
     {
         return $this->city;
     }
@@ -233,7 +236,7 @@ class Parking
     /**
      * @return string
      */
-    public function getDistrict(): string
+    public function getDistrict(): ?string
     {
         return $this->district;
     }
@@ -261,7 +264,7 @@ class Parking
     /**
      * @return string
      */
-    public function getLatitude(): string
+    public function getLatitude(): ?string
     {
         return $this->latitude;
     }
@@ -275,7 +278,7 @@ class Parking
     /**
      * @return string
      */
-    public function getLongitude(): string
+    public function getLongitude(): ?string
     {
         return $this->longitude;
     }
@@ -289,7 +292,7 @@ class Parking
     /**
      * @return Type
      */
-    public function getType(): Type
+    public function getType(): ?Type
     {
         return $this->type;
     }
@@ -304,7 +307,7 @@ class Parking
     /**
      * @return User
      */
-    public function getUser(): User
+    public function getUser(): ?User
     {
         return $this->user;
     }
@@ -355,6 +358,22 @@ class Parking
     {
         $this->disponibilities = $disponibilities;
         return $this;
+    }
+
+    /**
+     * @ORM\PrePersist()
+     */
+    public function prePersist()
+    {
+        $this->createdAt = new \DateTime();
+    }
+
+    /**
+     * @ORM\PreUpdate()
+     */
+    public function preUpdate()
+    {
+        $this->setUpdateAt(new \DateTime());
     }
 
 }

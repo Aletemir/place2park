@@ -38,7 +38,12 @@
                 <a href="#" class="homepage_button_search btn btn-success">
                     CHERCHER UNE PLACE
                 </a>
-                <a href="#" class="homepage_button_deposit btn btn-secondary">DEPOSER UNE ANNONCE</a>
+                {% if app.user %}
+                <a href="{{ path('new_parking') }}" class="homepage_button_deposit btn btn-secondary">DEPOSER UNE ANNONCE</a>
+                {% else %}
+                <a href="{{ path('app_login') }}" class="homepage_button_deposit btn btn-secondary">DEPOSER UNE ANNONCE</a>
+                {% endif %}
+
             </div>
         </div>
     </div>

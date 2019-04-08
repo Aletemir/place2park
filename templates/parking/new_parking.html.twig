@@ -1,0 +1,19 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Déposer une annonce {% endblock %}
+
+{% block body %}
+
+    <h1>Enregistrer votre parking</h1>
+
+    {{ form_start(form) }}
+    {{ form_row(form.title) }}
+    {{ form_row(form.pictureFile) }}
+    {{ form_row(form.city) }}
+    {{ form_row(form.district) }}
+    {{ form_row(form.street) }}
+    {{ form_row(form.description) }}
+    {{ form_row(form.termsAccepted) }}
+    <button class="btn">Envoyer</button>
+    {{ form_end(form) }}
+{% endblock %}

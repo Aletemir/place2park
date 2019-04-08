@@ -23,3 +23,4 @@ class DefaultController extends BaseController
         return $this->render('default/homepage.html.twig', ['users' => $users]);
     }
 }
+

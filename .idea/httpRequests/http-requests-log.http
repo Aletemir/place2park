@@ -1,0 +1,30 @@
+GET https://api-adresse.data.gouv.fr/search/?q=14=rue+de+la+diligence&q=8+bd+du+port&postcode=44380
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-04-08T122152.200.json
+
+###
+
+GET https://api-adresse.data.gouv.fr/search/68+rue+de+saint+malo&postcode=22100?q=14=rue+de+la+diligence
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET https://api-adresse.data.gouv.fr/search/?q=14=rue+de+la+diligence
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-04-08T122024.200.json
+
+###
+
+GET https://api-adresse.data.gouv.fr/search
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-04-08T121952.400.json
+
+###
+

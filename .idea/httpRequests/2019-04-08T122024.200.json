@@ -1,0 +1,140 @@
+{
+  "limit": 5,
+  "features": [
+    {
+      "geometry": {
+        "coordinates": [
+          2.124308,
+          49.044521
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "y": 6883093,
+        "city": "Saint-Ouen-l'Aumône",
+        "label": "14 Rue de la Diligence 95310 Saint-Ouen-l'Aumône",
+        "score": 0.833090909090909,
+        "type": "housenumber",
+        "street": "Rue de la Diligence",
+        "name": "14 Rue de la Diligence",
+        "x": 635980.3,
+        "id": "ADRNIVX_0000000350575378",
+        "housenumber": "14",
+        "citycode": "95572",
+        "context": "95, Val-d'Oise, Île-de-France",
+        "postcode": "95310",
+        "importance": 0.164
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -3.01043,
+          47.776013
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "y": 6758859.4,
+        "city": "Pluvigner",
+        "label": "14 Rue de la Diligence 56330 Pluvigner",
+        "score": 0.8321636363636362,
+        "type": "housenumber",
+        "street": "Rue de la Diligence",
+        "name": "14 Rue de la Diligence",
+        "x": 250284.7,
+        "id": "ADRNIVX_0000000324330271",
+        "housenumber": "14",
+        "citycode": "56177",
+        "context": "56, Morbihan, Bretagne",
+        "postcode": "56330",
+        "importance": 0.1538
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -1.617235,
+          47.270977
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "y": 6695832.8,
+        "city": "Orvault",
+        "label": "14 Rue de la Diligence 44700 Orvault",
+        "score": 0.8318363636363636,
+        "type": "housenumber",
+        "street": "Rue de la Diligence",
+        "name": "14 Rue de la Diligence",
+        "x": 351111.4,
+        "id": "ADRNIVX_0000000280048973",
+        "housenumber": "14",
+        "citycode": "44114",
+        "context": "44, Loire-Atlantique, Pays-de-la-Loire",
+        "postcode": "44700",
+        "importance": 0.1502
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -0.125189,
+          45.755342
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "y": 6522111.5,
+        "city": "Rouillac",
+        "label": "14 Rue de la Diligence (Plaizac) 16170 Rouillac",
+        "score": 0.8309363636363636,
+        "type": "housenumber",
+        "street": "Rue de la Diligence (Plaizac)",
+        "name": "14 Rue de la Diligence (Plaizac)",
+        "x": 457120.5,
+        "id": "ADRNIVX_0000000358690278",
+        "housenumber": "14",
+        "citycode": "16286",
+        "context": "16, Charente, Nouvelle-Aquitaine (Poitou-Charentes)",
+        "postcode": "16170",
+        "importance": 0.1403
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -1.618312,
+          47.326711
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "y": 6702018,
+        "city": "Treillières",
+        "label": "14 Rue de la Diligence 44119 Treillières",
+        "score": 0.8219818181818181,
+        "type": "housenumber",
+        "street": "Rue de la Diligence",
+        "name": "14 Rue de la Diligence",
+        "x": 351392,
+        "id": "ADRNIVX_0000000358301361",
+        "housenumber": "14",
+        "citycode": "44209",
+        "context": "44, Loire-Atlantique, Pays-de-la-Loire",
+        "postcode": "44119",
+        "importance": 0.0418
+      },
+      "type": "Feature"
+    }
+  ],
+  "attribution": "BAN",
+  "version": "draft",
+  "type": "FeatureCollection",
+  "licence": "ODbL 1.0",
+  "query": "14=rue+de+la+diligence"
+}

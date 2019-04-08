@@ -1,0 +1,143 @@
+{
+  "licence": "ODbL 1.0",
+  "limit": 5,
+  "features": [
+    {
+      "geometry": {
+        "coordinates": [
+          -2.34098,
+          47.258819
+        ],
+        "type": "Point"
+      },
+      "type": "Feature",
+      "properties": {
+        "context": "44, Loire-Atlantique, Pays-de-la-Loire",
+        "y": 6697933.5,
+        "citycode": "44132",
+        "postcode": "44380",
+        "score": 0.43526746411483247,
+        "street": "Boulevard du Port",
+        "city": "Pornichet",
+        "type": "housenumber",
+        "x": 296410.1,
+        "housenumber": "8",
+        "importance": 0.0511,
+        "name": "8 Boulevard du Port",
+        "id": "ADRNIVX_0000000280022748",
+        "label": "8 Boulevard du Port 44380 Pornichet"
+      }
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -2.309975,
+          47.253014
+        ],
+        "type": "Point"
+      },
+      "type": "Feature",
+      "properties": {
+        "context": "44, Loire-Atlantique, Pays-de-la-Loire",
+        "y": 6697132.1,
+        "citycode": "44132",
+        "postcode": "44380",
+        "score": 0.31757922077922074,
+        "street": "Avenue du Porteau",
+        "city": "Pornichet",
+        "type": "housenumber",
+        "x": 298706.1,
+        "housenumber": "8",
+        "importance": 0.0648,
+        "name": "8 Avenue du Porteau",
+        "id": "ADRNIVX_0000000280033422",
+        "label": "8 Avenue du Porteau 44380 Pornichet"
+      }
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -2.317796,
+          47.254363
+        ],
+        "type": "Point"
+      },
+      "type": "Feature",
+      "properties": {
+        "context": "44, Loire-Atlantique, Pays-de-la-Loire",
+        "y": 6697321.4,
+        "citycode": "44132",
+        "postcode": "44380",
+        "score": 0.20361943573667712,
+        "street": "Avenue du Gris",
+        "city": "Pornichet",
+        "type": "housenumber",
+        "x": 298126,
+        "housenumber": "8",
+        "importance": 0.0674,
+        "name": "8 Avenue du Gris",
+        "id": "ADRNIVX_0000000280031036",
+        "label": "8 Avenue du Gris 44380 Pornichet"
+      }
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -2.314148,
+          47.2516
+        ],
+        "type": "Point"
+      },
+      "type": "Feature",
+      "properties": {
+        "context": "44, Loire-Atlantique, Pays-de-la-Loire",
+        "y": 6696996.6,
+        "citycode": "44132",
+        "postcode": "44380",
+        "score": 0.1970909090909091,
+        "street": "Avenue du Rouet",
+        "city": "Pornichet",
+        "type": "housenumber",
+        "x": 298380.6,
+        "housenumber": "8",
+        "importance": 0.068,
+        "name": "8 Avenue du Rouet",
+        "id": "ADRNIVX_0000000280035955",
+        "label": "8 Avenue du Rouet 44380 Pornichet"
+      }
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -2.339494,
+          47.258675
+        ],
+        "type": "Point"
+      },
+      "type": "Feature",
+      "properties": {
+        "context": "44, Loire-Atlantique, Pays-de-la-Loire",
+        "y": 6697910,
+        "citycode": "44132",
+        "postcode": "44380",
+        "score": 0.19635454545454545,
+        "street": "Avenue du Logui",
+        "city": "Pornichet",
+        "type": "housenumber",
+        "x": 296521.1,
+        "housenumber": "8",
+        "importance": 0.0599,
+        "name": "8 Avenue du Logui",
+        "id": "ADRNIVX_0000000280022781",
+        "label": "8 Avenue du Logui 44380 Pornichet"
+      }
+    }
+  ],
+  "version": "draft",
+  "filters": {
+    "postcode": "44380"
+  },
+  "attribution": "BAN",
+  "type": "FeatureCollection",
+  "query": "8+bd+du+port"
+}
