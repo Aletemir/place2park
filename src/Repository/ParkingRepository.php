@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\User;
 use Doctrine\ORM\EntityRepository;
 
 
@@ -28,6 +29,7 @@ class ParkingRepository extends EntityRepository
 
         return $result;
     }
+
 
 
 }

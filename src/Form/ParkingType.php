@@ -18,12 +18,15 @@ use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class ParkingType extends AbstractType
 {
+
+    // create form for set new parking
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('title', TextType::class, ['label' => 'Titre'])
             ->add('type', EntityType::class,array(
                 'class'=>Type::class,
                 'choice_label'=>'label',
+                'label' => 'Type de parking'
             ))
             ->add('pictureFile', VichImageType::class, ['label' => 'photo'])
             ->add('description', TextareaType::class, ['label' => 'Description'])
@@ -33,7 +36,8 @@ class ParkingType extends AbstractType
             ->add('termsAccepted', CheckboxType::class, array(
                 'mapped' => false,
                 'constraints' => new IsTrue(),
-                ))
+                'label' => 'Accepter les conditions'
+            ))
         ;
     }
 

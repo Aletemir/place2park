@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Parking;
 use App\Form\ParkingType;
+use Curl\Curl;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -23,14 +24,13 @@ class ParkingController extends BaseController
     }
 
     /**
-     * @Route("/park/{id}", name="show_park")
+     * @Route("/park/show", name="show_park")
      */
     public function showOnePark(Parking $parking)
     {
         $park = $this->getDoctrine()->getRepository(Parking::class)->findOneBy(['id' => $parking->getId()]);
         dump($park);
         return $this->render('parking/parking_show.html.twig', ['parking' => $park]);
-
     }
 
     /**
@@ -42,18 +42,25 @@ class ParkingController extends BaseController
     {
 
         $parking = new Parking();
-        $parking->setUser($this->getUser());
+//        $parking->setUser($this->getUser()->getId());
+        $curl = new Curl();
+        $curl->setOpt(CURLOPT_RETURNTRANSFER, TRUE);
+        $curl->setOpt(CURLOPT_SSL_VERIFYPEER, FALSE);
+        $curl->get("https://api-adresse.data.gouv.fr/search", [
+            "q" => "8 bd du port"
+        ]);
+//        dump(json_decode($curl->response));die;
+
 // TODO : include gouv api to get latitude and longitude
         $form = $this->createForm(ParkingType::class, $parking);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
-
             $entityManager->persist($parking);
             $entityManager->flush();
             // TODO : redirect user to his parking page
-            return $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('user_show');
         }
 
         return $this->render('parking/new_parking.html.twig', ['form' => $form->createView()]);
