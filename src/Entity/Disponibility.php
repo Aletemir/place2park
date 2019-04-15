@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -75,15 +76,15 @@ class Disponibility
     }
 
     /**
-     * @return \DateTime
+     * @return DateTime
      */
-    public function getDateStart(): \DateTime
+    public function getDateStart(): ?DateTime
     {
         return $this->dateStart;
     }
 
 
-    public function setDateStart(\DateTime $dateStart): self
+    public function setDateStart(DateTime $dateStart): self
     {
         $this->dateStart = $dateStart;
 
@@ -91,14 +92,14 @@ class Disponibility
     }
 
     /**
-     * @return \DateTime
+     * @return DateTime
      */
-    public function getDateEnd(): \DateTime
+    public function getDateEnd(): ?DateTime
     {
         return $this->dateEnd;
     }
 
-    public function setDateEnd(\DateTime $dateEnd): self
+    public function setDateEnd(DateTime $dateEnd): self
     {
         $this->dateEnd = $dateEnd;
 
@@ -108,7 +109,7 @@ class Disponibility
     /**
      * @return int
      */
-    public function getPrice(): int
+    public function getPrice(): ?int
     {
         return $this->price;
     }

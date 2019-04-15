@@ -64,6 +64,8 @@ class Parking
      */
     private $city;
 
+//     TODO : include the postal code
+
     /**
      * @var string
      *

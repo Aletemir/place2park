@@ -8,12 +8,14 @@
 
     {{ form_start(form) }}
     {{ form_row(form.title) }}
+    {{ form_row(form.type) }}
     {{ form_row(form.pictureFile) }}
     {{ form_row(form.city) }}
     {{ form_row(form.district) }}
     {{ form_row(form.street) }}
     {{ form_row(form.description) }}
-    {{ form_row(form.termsAccepted) }}
+
+    <br>
     <button class="btn">Envoyer</button>
     {{ form_end(form) }}
 {% endblock %}

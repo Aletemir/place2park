@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Enregistrez les disponibilités {% endblock %}
+
+{% block body %}
+
+    {{ form_start(form) }}
+    {{ form_row(form.date_start) }}
+    {{ form_row(form.date_end) }}
+    {{ form_row(form.price) }}
+    <div class="termes d-flex" >
+        <p>Accepter les <a href="#">termes et condition</a>  {{ form_row(form.termsAccepted) }} </p>
+    </div>
+    <button class="btn">Envoyer</button>
+{{ form_end(form) }}
+
+{% endblock %}
