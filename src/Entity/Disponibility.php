@@ -7,9 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Disponibility
- *
+ * @ORM\Entity(repositoryClass="App\Repository\DisponibilityRepository")
  * @ORM\Table(name="disponibility", uniqueConstraints={@ORM\UniqueConstraint(name="id_UNIQUE", columns={"id"})}, indexes={@ORM\Index(name="fk_disponibility_parking1_idx", columns={"parking_id"}), @ORM\Index(name="fk_disponibility_reservation1_idx", columns={"reservation_id"})})
- * @ORM\Entity
  */
 class Disponibility
 {
@@ -136,6 +135,8 @@ class Disponibility
 
         return $this;
     }
+
+
 
     /**
      * @return Reservation

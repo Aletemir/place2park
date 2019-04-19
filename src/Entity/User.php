@@ -55,7 +55,6 @@ class User implements UserInterface
 
     /**
      * @NotBlank
-     * @
      */
     private $plainPassword;
 

@@ -14,6 +14,7 @@
                             <img class="user_picture" src="{{ asset('uploads/' ~ user.picture ) }}"
                                  alt="photo de {{ user.lastname }} {{ user.firstname }}">
                         {% else %}
+                            {# TODO : resolve the access to the following puicture (default user) #}
                             <img class="user_picture user_picture-anonym" src="uploads/anonym_user.png" alt="">
                         {% endif %}
                         <div class="user_name">
@@ -41,7 +42,7 @@
                 {% if app.user %}
                 <a href="{{ path('new_parking') }}" class="homepage_button_deposit btn btn-secondary">DEPOSER UNE ANNONCE</a>
                 {% else %}
-                <a href="{{ path('show_parks') }}" class="homepage_button_deposit btn btn-secondary">DEPOSER UNE ANNONCE</a>
+                <a href="{{ path('new_parking') }}" class="homepage_button_deposit btn btn-secondary">DEPOSER UNE ANNONCE</a>
                 {% endif %}
 
             </div>

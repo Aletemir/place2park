@@ -22,18 +22,22 @@ class DisponibilityController extends AbstractController
     public function new_disponibility(Request $request)
     {
         $parkDispo = new Disponibility();
-
+        $this->getDoctrine()->getRepository(Disponibility::class)->findBy(["parkingId"]);
         $form = $this->createForm(DisponibilityType::class, $parkDispo);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $parkDispo = $form->getData();
             $em = $this->getDoctrine()->getManager();
             $em->persist($parkDispo);
             $em->flush();
+
+        dump($parkDispo); die();
+
             return $this->redirectToRoute('user_index');
         }
-        return $this->render('disponibility/_new_disponibility.html.twig', ['form' => $form->createView()]);
+        return $this->render('disponibility/_new_disponibility.html.twig', [
+            'form' => $form->createView()
+        ]
+        );
     }
-
 }
