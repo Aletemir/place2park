@@ -23,14 +23,14 @@ class Disponibility
     private $id;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      *
      * @ORM\Column(name="date_start", type="date", nullable=false)
      */
     private $dateStart;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      *
      * @ORM\Column(name="date_end", type="date", nullable=false)
      */

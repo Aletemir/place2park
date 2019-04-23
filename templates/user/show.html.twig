@@ -14,7 +14,7 @@
                 <img class="user_picture" src="{{ asset('uploads/' ~ user.picture ) }}"
                      alt="photo de {{ user.lastname }} {{ user.firstname }}">
             {% else %}
-                <img class="user_picture user_picture-anonym" src="uploads/anonym_user.png"
+                <img class="user_picture user_picture-anonym" src="#"
                      alt="photographie par défault">
             {% endif %}
 
@@ -23,7 +23,9 @@
                 {% if app.user.adress %}
                     <div class="user_adress">{{ user.adress }}</div>
                 {% else %}
-                    <input type="text" class="user_input_adress" placeholder="Adresse" readonly>
+                    <label>
+                        <input type="text" class="user_input_adress" placeholder="Adresse" readonly >
+                    </label>
                 {% endif %}
                 <div class="user_email">{{ user.email }}</div>
             </div>

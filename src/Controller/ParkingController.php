@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Parking;
+use App\Entity\User;
 use App\Form\ParkingType;
 use Curl\Curl;
 use phpDocumentor\Reflection\Types\This;
@@ -16,33 +17,26 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class ParkingController extends BaseController
 {
-//    /**
-//     * @Route("/parks", name="show_parks")
-//     */
-//    public function showAllParks()
-//    {
-//        $parks = $this->getDoctrine()->getRepository(Parking::class)->findAll()
-//        return
-//    }
-
     /**
-     * @Route("/park/show", name="show_park")
+     * @Route("/{id}", name="show_park")
      */
-    public function showOnePark(Parking $parking)
+    public function show(Parking $parking): Response
     {
-        $park = $this->getDoctrine()->getRepository(Parking::class)->findOneBy(['id' => $parking->getId()]);
-        dump($park);
-        return $this->render('parking/parking_show.html.twig', ['parking' => $park]);
+    return $this->render('parking/index.html.twig', [ 'parking' => $parking]);
     }
 
     /**
-     * @Route("/park" , name="show_parks_by_price")
+     * @Route("/parks" , name="show_parks_by_price")
      */
     public function showParksByPrice()
     {
         $parkings = $this->getDoctrine()->getRepository(Parking::class)->findAllWithPrice();
+        $users = $this->getDoctrine()->getRepository(User::class)->findBy(['id'=> $this->getUser()]);
         dump($parkings);
-        return $this->render('parking/index.html.twig', ['parkings' => $parkings]);
+        return $this->render('parking/index.html.twig', [
+            'parkings' => $parkings,
+            'users'=> $users,
+        ]);
     }
 
     /**
@@ -70,7 +64,7 @@ class ParkingController extends BaseController
             $entityManager->persist($parking);
             $entityManager->flush();
             // redirect user to the disponibilties page
-            return $this->redirectToRoute('new_dispo');
+            return $this->redirectToRoute('new_dispo', [ "id" => $parking->getId() ]);
         }
     return $this->render('parking/_new_parking.html.twig', ['form'=>$form->createView()]);
     }

@@ -14,9 +14,10 @@
                             <img class="user_picture" src="{{ asset('uploads/' ~ user.picture ) }}"
                                  alt="photo de {{ user.lastname }} {{ user.firstname }}">
                         {% else %}
-                            <img class="user_picture user_picture-anonym" src="uploads/anonym_user.png" alt="">
+                            <img class="user_picture user_picture-anonym" src="../../public/uploads/users/anonym_user.png" alt="anonym user's photo ">
                         {% endif %}
                         <div class="user_name">
+
                             <p>{{ user.firstname }} {{ user.lastname }}</p>
                         </div>
                     </div>
@@ -41,7 +42,7 @@
                 {% if app.user %}
                 <a href="{{ path('new_parking') }}" class="homepage_button_deposit btn btn-secondary">DEPOSER UNE ANNONCE</a>
                 {% else %}
-                <a href="{{ path('show_parks') }}" class="homepage_button_deposit btn btn-secondary">DEPOSER UNE ANNONCE</a>
+                <a href="{{ path('new_parking') }}" class="homepage_button_deposit btn btn-secondary">DEPOSER UNE ANNONCE</a>
                 {% endif %}
 
             </div>

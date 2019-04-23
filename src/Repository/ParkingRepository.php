@@ -2,7 +2,6 @@
 
 namespace App\Repository;
 
-use App\Entity\User;
 use DateTime;
 use Doctrine\ORM\EntityRepository;
 
@@ -18,6 +17,7 @@ class ParkingRepository extends EntityRepository
             ->addSelect('MIN(d.price) AS price')
             ->innerJoin('p.disponibilities', 'd')
             ->where($qb->expr()->gt('d.dateStart', ':now'))
+            ->groupBy('p.id')
             ->setParameter(':now', new DateTime());
 
         $parkings = $qb->getQuery()->getResult();

@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Disponibility;
 use App\Entity\Parking;
 use App\Form\DisponibilityType;
+use Doctrine\ORM\Mapping\Id;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,13 +16,14 @@ class DisponibilityController extends AbstractController
 {
     //form for set disponibility of new parking created
     /**
-     * @Route("/new_disponibility", name="new_dispo")
+     * @Route("/{id}/new_disponibility", name="new_dispo")
      * @param Request $request
      * @return RedirectResponse|Response
      */
-    public function new_disponibility(Request $request)
+    public function new_disponibility(Request $request, Parking $parking)
     {
         $parkDispo = new Disponibility();
+        $parkDispo->setParking($parking);
 
         $form = $this->createForm(DisponibilityType::class, $parkDispo);
 

@@ -23,7 +23,7 @@ class UserController extends AbstractController
     /**
      * @Route("/user", name="user_show")
      */
-    public function showuser()
+    public function showUser()
     {
         $users = $this->getDoctrine()->getRepository(User::class)->findBy(["id"=> $this->getUser()]);
         dump($users);

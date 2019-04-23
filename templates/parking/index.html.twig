@@ -1,16 +1,42 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <div class="header_parkings-page d-flex w-100 flex-wrap">
+    <div class="header_title_name">PLACE 2 PARK</div>
 
-    <div class="header_parkings-page d-flex">
-        <div class="header_title_name">PLACE 2 PARK</div>
+    <a class="btn btn-primary" style="height: 50px" href="{{ path('homepage') }}">Back homepage</a>
 
+    {% if app.user %}
+    {% for user in users %}
+    <div class="user_infos d-flex justify-content-end">
 
+        {% if app.user.picture %}
+            <img class="user_picture" src="{{ asset('uploads/' ~ user.picture ) }}"
+                 alt="photo de {{ user.lastname }} {{ user.firstname }}">
+        {% else %}
+            <img class="user_picture user_picture-anonym" src="../../public/uploads/users/anonym_user.png" alt="">
+        {% endif %}
+        <div class="user_name">
+
+            <p>{{ user.firstname }} {{ user.lastname }}</p>
+        </div>
+        {% endfor %}
+        <a class="header_button_user-profil btn btn-primary" href="{{ path('user_show') }}">Mon profil</a>
+        <a class="header_button_user-profil btn btn-danger" href="{{ path('app_logout') }}">Déco</a>
+
+        {% else %}
+            <a href="{{ path('app_login') }}" class="header_button_login btn btn-primary">
+                SE CONNECTER
+            </a>
+            <a href="{{ path('user_registration') }}" class="header_button_signin btn btn-secondary">S'INSCRIRE</a>
+        {% endif %}
     </div>
 
-{% for parking in parkings %}
-    <article class="d-flex ">
-        {{ include('parking/card.html.twig') }}
-    </article>
-    {% endfor %}
+    <div class="parking-list d-flex flex-row">
+        {% for parking in parkings %}
+            <article class="d-flex ">
+                {{ include('parking/card.html.twig') }}
+            </article>
+        {% endfor %}
+    </div>
 {% endblock %}
