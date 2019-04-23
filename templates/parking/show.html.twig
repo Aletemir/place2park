@@ -1,0 +1,16 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Place2Park | Annonce{% endblock %}
+
+{% block body %}
+
+    <p>{{ parking.title }}</p>
+    <img src="{{ asset('uploads/' ~ parking.picture) }}" class="card-img-top" style="height: 50%">
+    <p>{{ parking.type.label }}</p>
+    <p>{{ parking.price }}</p>
+    <div class="parking_price">{{ parking.price }} €/jour</div>
+
+
+
+{% endblock %}
+

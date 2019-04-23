@@ -6,7 +6,6 @@ use App\Entity\Parking;
 use App\Entity\User;
 use App\Form\ParkingType;
 use Curl\Curl;
-use phpDocumentor\Reflection\Types\This;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,11 +17,13 @@ use Symfony\Component\Routing\Annotation\Route;
 class ParkingController extends BaseController
 {
     /**
-     * @Route("/{id}", name="show_park")
+     * @Route("/show/{id}", name="show_park", methods="GET")
      */
-    public function show(Parking $parking): Response
+    public function show(): Response
     {
-    return $this->render('parking/index.html.twig', [ 'parking' => $parking]);
+    $park = $this->getDoctrine()->getRepository(Parking::class)->findOneByPrice();
+
+    return $this->render('parking/show.html.twig', ['parking' => $park]);
     }
 
     /**
@@ -38,6 +39,7 @@ class ParkingController extends BaseController
             'users'=> $users,
         ]);
     }
+
 
     /**
      * @Route("/add-parking", name="new_parking")
