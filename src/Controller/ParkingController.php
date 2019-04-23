@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Disponibility;
 use App\Entity\Parking;
 use App\Entity\User;
 use App\Form\ParkingType;
@@ -19,11 +20,14 @@ class ParkingController extends BaseController
     /**
      * @Route("/show/{id}", name="show_park", methods="GET")
      */
-    public function show(): Response
+    public function show(Parking $parking, Disponibility $disponibility): Response
     {
-    $park = $this->getDoctrine()->getRepository(Parking::class)->findOneByPrice();
-
-    return $this->render('parking/show.html.twig', ['parking' => $park]);
+    $park = $this->getDoctrine()->getRepository(Parking::class)->findOneBy(['id' => $parking->getId()]);
+    $dispo = $this->getDoctrine()->getRepository(Disponibility::class)->findOneBy(['id' => $disponibility->getParking()]);
+dump($park);
+    return $this->render('parking/show.html.twig', [
+        'parking' => $park,
+        'disponibility' => $dispo]);
     }
 
     /**
