@@ -38,4 +38,13 @@ class DisponibilityController extends AbstractController
         return $this->render('disponibility/_new_disponibility.html.twig', ['form' => $form->createView()]);
     }
 
+    /**
+     * @Route("/disponibility", name="show_dispo_by_park"))
+     * @return Response
+     */
+    public function show(){
+        $disponibilities = $this->getDoctrine()->getRepository(Disponibility::class)->findAll();
+        dump($disponibilities);
+        return $this->render('disponibility/index.html.twig', ['dispo'=>$disponibilities]);
+    }
 }

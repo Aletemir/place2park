@@ -12,8 +12,9 @@
     {{ form_row(form.email) }}
     {{ form_row(form.plainPassword) }}
     {{ form_row(form.pictureFile) }}
+    {{ form_row(form.termsAccepted) }}
 
-    <button class="btn">Register</button>
+    <button class="btn">Créer votre profil</button>
     {{ form_end(form) }}
 
     <p>Déjà un compte ? <a href="{{ path('app_login') }}" class="link_log-in">Vous connectez</a></p>

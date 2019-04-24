@@ -4,13 +4,54 @@
 
 {% block body %}
 
-    <a href="{{ path('show_parks_by_price') }}" class="btn btn-primary">back page search</a>
-    <a href="{{ path('homepage') }}" class="btn btn-secondary">back homepage</a>
+    {% if app.user %}
+        {% for user in users %}
+            <div class="user_infos d-flex justify-content-end">
 
-    <img src="{{ asset('uploads/' ~ parking.picture) }}" class="card-img-top" alt="parking's pictures" style="height: 50%">
-    <p style="color: green">{{ parking.type.label }}</p>
-    <p class="price_show">{{ parking.price }}</p>
+                {% if app.user.picture %}
+                    <img class="user_picture" src="{{ asset('uploads/' ~ user.picture ) }}"
+                         alt="photo de {{ user.lastname }} {{ user.firstname }}">
+                {% else %}
+                    <img class="user_picture user_picture-anonym" src="../../public/uploads/users/anonym_user.png"
+                         alt="">
+                {% endif %}
+                <div class="user_name">
 
+                    <p>{{ user.firstname }} {{ user.lastname }}</p>
+                </div>
+            </div>
+        {% endfor %}
+        <a class="header_button_user-profil btn btn-secondary" href="{{ path('user_show') }}">Mon profil</a>
+        <a class="header_button_user-profil btn btn-danger" href="{{ path('app_logout') }}">Déco</a>
+
+    {% else %}
+        <a href="{{ path('app_login') }}" class="header_button_login btn btn-primary">SE CONNECTER</a>
+        <a href="{{ path('user_registration') }}" class="header_button_signin btn btn-secondary">S'INSCRIRE</a>
+    {% endif %}
+
+    <div class="block_button">
+        <a href="{{ path('show_parks') }}" class="btn btn-primary">back page search</a>
+        <a href="{{ path('homepage') }}" class="btn btn-secondary">back homepage</a>
+    </div>
+    <div class="parking_page_container m-2">
+        <img src="{{ asset('uploads/' ~ parking.picture) }}" class="card-img-top" alt="parking's pictures"
+             style="height: 50%">
+        <h2>{{ parking.title }}</h2>
+        <p>{{ parking.user.firstname }} {{ parking.user.lastname }}</p>
+        <p style="color: green">{{ parking.type.label }}</p>
+        <p class="price_show">{{ parking.price }} € par jours </p>
+        <p>{{ parking.city|upper }} ville</p>
+        <p>{{ parking.street|upper }} rue</p>
+        <p>{{ parking.district|upper }} quartier</p>
+    </div>
+
+    <div class="parking_page_redirect">
+        {% if app.user %}
+            <a href="{{ path('show_dispo_by_park') }}">{{ 'Voir les disponibilitées'|upper }}</a>
+        {% else %}
+            <a href="{{ path('app_login') }}">{{ 'Vous connecter pour voir les disponibilités'|upper }}</a>
+        {% endif %}
+    </div>
 
 {% endblock %}
 

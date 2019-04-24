@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Disponibility;
 use App\Entity\Parking;
 use App\Entity\User;
 use App\Form\ParkingType;
@@ -22,8 +21,10 @@ class ParkingController extends BaseController
      */
     public function show(Parking $parking)
     {
-    return $this->render('parking/show.html.twig', [
-        'parking' => $parking,
+        $users = $this->getDoctrine()->getRepository(User::class)->findBy(['id' => $this->getUser()]);
+        return $this->render('parking/show.html.twig', [
+            'parking' => $parking,
+            'users' => $users
         ]);
     }
 
@@ -33,11 +34,11 @@ class ParkingController extends BaseController
     public function showParksByPrice()
     {
         $parkings = $this->getDoctrine()->getRepository(Parking::class)->findAllWithPrice();
-        $users = $this->getDoctrine()->getRepository(User::class)->findBy(['id'=> $this->getUser()]);
+        $users = $this->getDoctrine()->getRepository(User::class)->findBy(['id' => $this->getUser()]);
         dump($parkings);
         return $this->render('parking/index.html.twig', [
             'parkings' => $parkings,
-            'users'=> $users,
+            'users' => $users,
         ]);
     }
 
@@ -68,8 +69,8 @@ class ParkingController extends BaseController
             $entityManager->persist($parking);
             $entityManager->flush();
             // redirect user to the disponibilties page
-            return $this->redirectToRoute('new_dispo', [ "id" => $parking->getId() ]);
+            return $this->redirectToRoute('new_dispo', ["id" => $parking->getId()]);
         }
-    return $this->render('parking/_new_parking.html.twig', ['form'=>$form->createView()]);
+        return $this->render('parking/_new_parking.html.twig', ['form' => $form->createView()]);
     }
 }

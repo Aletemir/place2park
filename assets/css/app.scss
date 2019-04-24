@@ -1,5 +1,6 @@
 
 @import "~bootstrap/scss/bootstrap";
+@import "indexPark";
 body {
   box-sizing: border-box;
   padding: 0;
@@ -25,10 +26,11 @@ body {
   &_button-top {
     height: 95px;
   }
+
+  //&_parkings-page{
+  //  background: grey;
+  //}
 }
-
-
-
 
 // if the user is logged
 .user {
@@ -37,5 +39,9 @@ body {
     height: 70px;
     border-radius: 50px;
 
+  }
+  &_infos{
+    margin: 20%;
+    color: #000;
   }
 }
