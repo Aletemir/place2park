@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Parking;
 use DateTime;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
@@ -18,7 +19,8 @@ class ParkingRepository extends EntityRepository
             ->addSelect('MIN(d.price) AS price')
             ->innerJoin('p.disponibilities', 'd')
             ->where($qb->expr()->gt('d.dateStart', ':now'))
-            ->groupBy('p.id')->setParameter(':now', new DateTime());
+            ->groupBy('p.id')
+            ->setParameter(':now', new DateTime());
 
         $parkings = $qb->getQuery()->getResult();
 
@@ -31,14 +33,14 @@ class ParkingRepository extends EntityRepository
         return $result;
     }
 
-    public function findOneByPrice(): array
+    public function findOneParkById()
     {
         $qb = $this->createQueryBuilder('p');
 
         $qb = $qb->select('p')
-            ->addSelect('MIN(d.price) AS price')
-            ->innerJoin('p.disponibilities', 'd');
+            ->innerJoin('p.disponibilities', 'd')
+            ->where($qb->expr()->eq('p.id', ':parking'));
 
-        return $qb ->getQuery()->getResult();
-     }
+        return $qb->getQuery()->getResult();
+    }
 }

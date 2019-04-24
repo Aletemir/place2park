@@ -3,9 +3,13 @@
 {% block title %}Place2Park | Annonce{% endblock %}
 
 {% block body %}
+
+    <a href="{{ path('show_parks_by_price') }}" class="btn btn-primary">back page search</a>
+    <a href="{{ path('homepage') }}" class="btn btn-secondary">back homepage</a>
+
     <img src="{{ asset('uploads/' ~ parking.picture) }}" class="card-img-top" alt="parking's pictures" style="height: 50%">
     <p>{{ parking.type.label }}</p>
-    <p>{{ disponibility.price }}</p>
+    <p>{{ parking.price }}</p>
 
 
 {% endblock %}

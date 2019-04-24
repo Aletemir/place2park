@@ -27,7 +27,15 @@ class UserController extends AbstractController
     {
         $users = $this->getDoctrine()->getRepository(User::class)->findBy(["id"=> $this->getUser()]);
         dump($users);
-        return $this->render('user/show.html.twig', ['users' => $users]);
-
+        return $this->render('user/index.html.twig', ['users' => $users]);
     }
+
+//    /**
+//     * @Route("/user/parks", name"user_parks")
+//     */
+//    public function showUserParks()
+//    {
+//
+//    }
+
 }

@@ -4,8 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Place 2 Park {% endblock %}</title>
-    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
-    {% block stylesheets %}{{ encore_entry_link_tags('app') }}{% endblock %}
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    {% endblock %}
+
 </head>
 
 <body>

@@ -20,14 +20,13 @@ class ParkingController extends BaseController
     /**
      * @Route("/show/{id}", name="show_park", methods="GET")
      */
-    public function show(Parking $parking, Disponibility $disponibility): Response
+    public function show(Parking $parking)
     {
-    $park = $this->getDoctrine()->getRepository(Parking::class)->findOneBy(['id' => $parking->getId()]);
-    $dispo = $this->getDoctrine()->getRepository(Disponibility::class)->findOneBy(['id' => $disponibility->getParking()]);
-dump($park);
+//    $park = $this->getDoctrine()->getRepository(Parking::class)->findOneParkById($parking->getId());
+    dump($parking);
     return $this->render('parking/show.html.twig', [
-        'parking' => $park,
-        'disponibility' => $dispo]);
+        'parking' => $parking,
+        ]);
     }
 
     /**

@@ -133,9 +133,6 @@ class Parking
      */
     private $disponibilities;
 
-    public $price;
-
-
     public function __construct()
     {
         $this->disponibilities = new ArrayCollection();
@@ -360,6 +357,17 @@ class Parking
     {
         $this->disponibilities = $disponibilities;
         return $this;
+    }
+
+    public function getPrice() {
+        $price = null;
+        foreach ($this->getDisponibilities() as $disponibility) {
+            if (!$price || $disponibility->getPrice() < $price) {
+                $price = $disponibility->getPrice();
+            }
+        }
+
+        return $price;
     }
 
     /**
