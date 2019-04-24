@@ -14,7 +14,8 @@
                             <img class="user_picture" src="{{ asset('uploads/' ~ user.picture ) }}"
                                  alt="photo de {{ user.lastname }} {{ user.firstname }}">
                         {% else %}
-                            <img class="user_picture user_picture-anonym" src="../../public/uploads/users/anonym_user.png" alt="anonym user's photo ">
+                            <img class="user_picture user_picture-anonym"
+                                 src="../../public/uploads/users/anonym_user.png" alt="anonym user's photo ">
                         {% endif %}
                         <div class="user_name">
 
@@ -36,14 +37,12 @@
         <div class="header_title_container d-flex w-75 m-auto flex-wrap">
             <h1 class="header_title_name text-center w-100 ">PLACE 2 PARK</h1>
             <div class="header_button_container d-flex w-50 m-auto justify-content-center align-content-between">
-                <a href="#" class="homepage_button_search btn btn-success">
+                <a href="{{ path('show_parks') }}" class="homepage_button_search btn btn-success">
                     CHERCHER UNE PLACE
                 </a>
-                {% if app.user %}
-                <a href="{{ path('new_parking') }}" class="homepage_button_deposit btn btn-secondary">DEPOSER UNE ANNONCE</a>
-                {% else %}
-                <a href="{{ path('show_parks_by_price') }}" class="homepage_button_deposit btn btn-secondary">DEPOSER UNE ANNONCE</a>
-                {% endif %}
+                <a href="{{ path('new_parking') }}" class="homepage_button_deposit btn btn-secondary">DEPOSER UNE
+                    ANNONCE</a>
+
 
             </div>
         </div>

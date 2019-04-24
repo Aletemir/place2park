@@ -8,8 +8,8 @@
     <a href="{{ path('homepage') }}" class="btn btn-secondary">back homepage</a>
 
     <img src="{{ asset('uploads/' ~ parking.picture) }}" class="card-img-top" alt="parking's pictures" style="height: 50%">
-    <p>{{ parking.type.label }}</p>
-    <p>{{ parking.price }}</p>
+    <p style="color: green">{{ parking.type.label }}</p>
+    <p class="price_show">{{ parking.price }}</p>
 
 
 {% endblock %}

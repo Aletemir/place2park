@@ -32,7 +32,8 @@ class DisponibilityController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($parkDispo);
             $em->flush();
-            return $this->redirectToRoute('show_parks_by_price');
+//            TODO this route have to redirect to user list of park
+            return $this->redirectToRoute('show_park');
         }
         return $this->render('disponibility/_new_disponibility.html.twig', ['form' => $form->createView()]);
     }

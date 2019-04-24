@@ -22,15 +22,13 @@ class ParkingController extends BaseController
      */
     public function show(Parking $parking)
     {
-//    $park = $this->getDoctrine()->getRepository(Parking::class)->findOneParkById($parking->getId());
-    dump($parking);
     return $this->render('parking/show.html.twig', [
         'parking' => $parking,
         ]);
     }
 
     /**
-     * @Route("/parks" , name="show_parks_by_price")
+     * @Route("/parks" , name="show_parks")
      */
     public function showParksByPrice()
     {
@@ -56,6 +54,7 @@ class ParkingController extends BaseController
         $parking = new Parking();
         $parking->setUser($this->getUser());
         $curl = new Curl();
+//         TODO IMPORTANT have to get the adress with longitude and latitude /!\
         $curl->setOpt(CURLOPT_RETURNTRANSFER, TRUE);
         $curl->setOpt(CURLOPT_SSL_VERIFYPEER, FALSE);
         $curl->get("https://api-adresse.data.gouv.fr/search", ["q" => $this->getUser()->getAdress()]);
