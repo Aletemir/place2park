@@ -17,7 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ParkingController extends BaseController
 {
     /**
-     * @Route("/show/{id}", name="show_park", methods="GET")
+     * @Route("/park/{id}", name="show_park", methods="GET")
      */
     public function show(Parking $parking)
     {
