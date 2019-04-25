@@ -23,7 +23,6 @@ class Disponibility
 
     /**
      * @var DateTime
-     *
      * @ORM\Column(name="date_start", type="date", nullable=false)
      */
     private $dateStart;
@@ -92,6 +91,7 @@ class Disponibility
 
     /**
      * @return DateTime
+
      */
     public function getDateEnd(): ?DateTime
     {

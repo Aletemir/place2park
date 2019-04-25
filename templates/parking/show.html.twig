@@ -7,7 +7,6 @@
     {% if app.user %}
         {% for user in users %}
             <div class="user_infos d-flex justify-content-end">
-
                 {% if app.user.picture %}
                     <img class="user_picture" src="{{ asset('uploads/' ~ user.picture ) }}"
                          alt="photo de {{ user.lastname }} {{ user.firstname }}">
@@ -16,7 +15,6 @@
                          alt="">
                 {% endif %}
                 <div class="user_name">
-
                     <p>{{ user.firstname }} {{ user.lastname }}</p>
                 </div>
             </div>
@@ -43,13 +41,15 @@
         <p>{{ parking.city|upper }} ville</p>
         <p>{{ parking.street|upper }} rue</p>
         <p>{{ parking.district|upper }} quartier</p>
+        <p>{{ parking.description }}</p>
     </div>
-
+<div class="dispo_block">
+</div>
     <div class="parking_page_redirect">
         {% if app.user %}
-            <a href="{{ path('show_dispo_by_park') }}">{{ 'Voir les disponibilitées'|upper }}</a>
+            <a href="{{ path('show_dispo_by_park', { 'id': parking.id }) }}">{{ 'Voir les disponibilitées'|upper }}</a>
         {% else %}
-            <a href="{{ path('app_login') }}">{{ 'Vous connecter pour voir les disponibilités'|upper }}</a>
+            <a href="{{ path('app_login') }}>{{ 'Vous connecter pour voir les disponibilités'|upper }}</a>
         {% endif %}
     </div>
 

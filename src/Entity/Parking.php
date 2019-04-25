@@ -367,6 +367,7 @@ class Parking
             }
         }
 
+
         return $price;
     }
 

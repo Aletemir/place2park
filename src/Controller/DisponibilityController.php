@@ -39,12 +39,16 @@ class DisponibilityController extends AbstractController
     }
 
     /**
-     * @Route("/disponibility", name="show_dispo_by_park"))
+     * @Route("/disponibility/{parking}", name="show_dispo_by_park"))
      * @return Response
      */
-    public function show(){
-        $disponibilities = $this->getDoctrine()->getRepository(Disponibility::class)->findAll();
-        dump($disponibilities);
-        return $this->render('disponibility/index.html.twig', ['dispo'=>$disponibilities]);
+    public function show(Disponibility $disponibility){
+
+//        $disponibilities = $this->getDoctrine()->getRepository(Disponibility::class)->findDisponibiliityByParking();
+//        $park = $this->getDoctrine()->getRepository(Disponibility::class)->findBy(['id'=> $disponibility->getId()]);
+//        dump($park);
+        return $this->render('disponibility/index.html.twig', [
+            'disponibility'=>$disponibility,
+        ]);
     }
 }
