@@ -45,8 +45,8 @@ class DisponibilityController extends AbstractController
     public function show(Disponibility $disponibility){
 
 //        $disponibilities = $this->getDoctrine()->getRepository(Disponibility::class)->findDisponibiliityByParking();
-//        $park = $this->getDoctrine()->getRepository(Disponibility::class)->findBy(['id'=> $disponibility->getId()]);
-//        dump($park);
+        $park = $this->getDoctrine()->getRepository(Disponibility::class)->findBy(['id'=> $disponibility->getId()]);
+        dump($park);
         return $this->render('disponibility/index.html.twig', [
             'disponibility'=>$disponibility,
         ]);

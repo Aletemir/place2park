@@ -44,10 +44,15 @@
         <p>{{ parking.description }}</p>
     </div>
 <div class="dispo_block">
+    {% for disponibility in parking.disponibilities  %}
+        {{ disponibility.dateStart|date('d/m/Y') }}
+        <br>
+        {{ disponibility.dateEnd|date('d/m/Y') }}
+    {% endfor %}
 </div>
     <div class="parking_page_redirect">
         {% if app.user %}
-            <a href="{{ path('show_dispo_by_park', { 'id': parking.id }) }}">{{ 'Voir les disponibilitées'|upper }}</a>
+            <a href="{{ path('show_dispo_by_park', { 'parking': parking.id }) }}">{{ 'Voir les disponibilitées'|upper }}</a>
         {% else %}
             <a href="{{ path('app_login') }}>{{ 'Vous connecter pour voir les disponibilités'|upper }}</a>
         {% endif %}
