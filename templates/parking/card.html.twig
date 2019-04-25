@@ -6,8 +6,8 @@
         <div class="card-text">
             <div class="parking_price">{{ parking.price }} €/jour</div>
             <div class="parking_type">{{ parking.type.label }}</div>
-            <div class="parking_city">{{ parking.city }}</div>
-            <div class="parking_district">{{ parking.district }}</div>
+            <div class="parking_city">{{ parking.city }} city</div>
+            <div class="parking_district">{{ parking.district }} quartier</div>
         </div>
 
             <a href="{{ path('show_park', { 'id' : parking.id }) }}" class="btn btn-primary">VOIR PLUS</a>
