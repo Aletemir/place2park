@@ -50,7 +50,7 @@
         {{ disponibility.dateEnd|date('d/m/Y') }}
     {% endfor %}
 </div>
-    <a href="{{ path('reservation') }}">Réservez votre parking !</a>
+    <a href="{{ path('add_new_reservation' ,{ 'parkingName' : parking.title}) }}">Réservez votre parking !</a>
 
 {% endblock %}
 

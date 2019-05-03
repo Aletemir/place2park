@@ -31,7 +31,9 @@ class DisponibilityType extends AbstractType
                 'constraints' => new GreaterThanOrEqual('date_start'),
                 'label' => 'Fin'
             ])
-            ->add('price', IntegerType::class, ['label'=>'Prix'])
+            ->add('price', IntegerType::class, [
+                'label'=>'Prix'
+            ])
             ->add('termsAccepted', CheckboxType::class, array(
                 'mapped' => false,
                 'constraints' => new IsTrue(),

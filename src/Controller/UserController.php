@@ -2,8 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Parking;
 use App\Entity\User;
+use App\Form\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -30,12 +33,19 @@ class UserController extends AbstractController
         return $this->render('user/index.html.twig', ['users' => $users]);
     }
 
-//    /**
-//     * @Route("/user/parks", name"user_parks")
-//     */
-//    public function showUserParks()
-//    {
-//
-//    }
+    public function edit(Request $request, User $user)
+    {
+        $form = $this->createForm(UserType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('user_index', ['id' => $user->getId()]);
+        }
+        return $this->render('user/edit.html.twig', ['user' => $user, 'form' => $form->createView(),]);
+    }
+
+
 
 }

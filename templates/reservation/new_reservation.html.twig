@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ form_start(form) }}
+
+    {{ form_row(form.dateStart) }}
+    {{ form_row(form.dateEnd) }}
+    <br>
+    <button class="btn">Envoyer</button>
+
+    {{ form_end(form) }}
+
+
+
+{% endblock %}

@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use DateTime;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -22,25 +24,19 @@ class Reservation
     private $id;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      *
      * @ORM\Column(name="date_start", type="date", nullable=false)
      */
     private $dateStart;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      *
      * @ORM\Column(name="date_end", type="date", nullable=false)
      */
     private $dateEnd;
 
-    /**
-     * @var bool
-     *
-     * @ORM\Column(name="paid", type="boolean", nullable=false)
-     */
-    private $paid;
 
     /**
      * @var User
@@ -51,10 +47,21 @@ class Reservation
      * })
      */
     private $user;
+    /**
+     * @ORM\OneToMany(targetEntity="Disponibility", mappedBy="reservation")
+     */
+    private $disponibilities;
 
     /**
      * @return int
      */
+
+    public function __construct()
+    {
+        $this->disponibilities = new ArrayCollection();
+        $this->user = new ArrayCollection();
+    }
+
     public function getId(): int
     {
         return $this->id;
@@ -67,28 +74,28 @@ class Reservation
     }
 
     /**
-     * @return \DateTime
+     * @return DateTime
      */
-    public function getDateStart(): \DateTime
+    public function getDateStart(): ?DateTime
     {
         return $this->dateStart;
     }
 
-    public function setDateStart(\DateTime $dateStart): self
+    public function setDateStart(DateTime $dateStart): self
     {
         $this->dateStart = $dateStart;
         return $this;
     }
 
     /**
-     * @return \DateTime
+     * @return DateTime
      */
-    public function getDateEnd(): \DateTime
+    public function getDateEnd(): ?DateTime
     {
         return $this->dateEnd;
     }
 
-    public function setDateEnd(\DateTime $dateEnd): self
+    public function setDateEnd(DateTime $dateEnd): self
     {
         $this->dateEnd = $dateEnd;
         return $this;
@@ -97,7 +104,7 @@ class Reservation
     /**
      * @return bool
      */
-    public function isPaid(): bool
+    public function isPaid(): ?bool
     {
         return $this->paid;
     }
@@ -111,7 +118,7 @@ class Reservation
     /**
      * @return User
      */
-    public function getUser(): User
+    public function getUser(): ?User
     {
         return $this->user;
     }
@@ -120,6 +127,34 @@ class Reservation
     {
         $this->user = $user;
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDisponibilities()
+    {
+        return $this->disponibilities;
+    }
+
+    /**
+     * @param mixed $disponibilities
+     * @return Reservation
+     */
+    public function setDisponibilities($disponibilities): self
+    {
+        $this->disponibilities = $disponibilities;
+        return $this;
+    }
+
+    public function getDateEndDisponibility()
+    {
+        $dateEndDispo = null;
+        foreach ($this->getDisponibilities() as $disponibility) {
+            if (!$dateEndDispo || $disponibility->getDateEnd() < $dateEndDispo) {
+                $dateEndDispo = $disponibility->getDateEnd();
+            }
+        }
     }
 
 

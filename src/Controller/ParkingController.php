@@ -17,7 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ParkingController extends BaseController
 {
     /**
-     * @Route("/park/{id}", name="show_park", methods="GET")
+     * @Route("/show/{id}", name="show_park", methods="GET")
      */
     public function show(Parking $parking)
     {
@@ -72,5 +72,18 @@ class ParkingController extends BaseController
             return $this->redirectToRoute('new_dispo', ["id" => $parking->getId()]);
         }
         return $this->render('parking/_new_parking.html.twig', ['form' => $form->createView()]);
+    }
+
+    /**
+     * @Route("/user/parks", name="user_parks_list")
+     */
+    public function showAllParkPossessed()
+    {
+        $users = $this->getDoctrine()->getRepository(User::class)->findBy(["id"=> $this->getUser()]);
+        dump($users);
+        $parksUser = $this->getDoctrine()->getRepository(Parking::class)->findAllByUser();
+        dump($parksUser);
+        return $this->render('user/show_user_parking_possessed.html.twig', ['users'=>$users]);
+
     }
 }

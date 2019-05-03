@@ -20,19 +20,29 @@ class ParkingType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', TextType::class, ['label' => 'Titre'])
+            ->add('title', TextType::class, [
+                'label' => 'Titre'
+            ])
             ->add('type', EntityType::class,array(
                 'class'=>Type::class,
                 'choice_label'=>'label',
                 'label' => 'Type de parking'
             ))
-            ->add('pictureFile', VichImageType::class, ['label' => 'photo'])
-            ->add('description', TextareaType::class, ['label' => 'Description'])
-            ->add('city', TextType::class, ['label' => 'Ville'])
-            ->add('district', TextType::class, ['label' => 'Quartier'])
-            ->add('street', TextType::class, ['label' => 'Rue'])
-
-
+            ->add('pictureFile', VichImageType::class, [
+                'label' => 'photo'
+            ])
+            ->add('description', TextareaType::class, [
+                'label' => 'Description'
+            ])
+            ->add('city', TextType::class, [
+                'label' => 'Ville'
+            ])
+            ->add('district', TextType::class, [
+                'label' => 'Quartier'
+            ])
+            ->add('street', TextType::class, [
+                'label' => 'Rue'
+            ])
         ;
     }
 

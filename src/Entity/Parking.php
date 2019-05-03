@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
@@ -95,14 +96,14 @@ class Parking
     private $longitude;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      *
      * @ORM\Column(name="created_at", type="datetime", length=255, nullable=false)
      */
     private $createdAt;
 
     /**
-     * @var \DateTime|null
+     * @var DateTime|null
      *
      * @ORM\Column(name="update_at", type="datetime", length=255, nullable=true)
      */
@@ -200,7 +201,7 @@ class Parking
         $this->pictureFile = $picture;
 
         if ($picture) {
-            $this->updatedAt = new \DateTime('now');
+            $this->updatedAt = new DateTime('now');
         }
     }
 
@@ -319,7 +320,7 @@ class Parking
     }
 
     /**
-     * @return \DateTime
+     * @return DateTime
      */
     public function getCreatedAt(): \DateTimeInterface
     {
@@ -376,7 +377,7 @@ class Parking
      */
     public function prePersist()
     {
-        $this->createdAt = new \DateTime();
+        $this->createdAt = new DateTime();
     }
 
     /**
@@ -384,7 +385,7 @@ class Parking
      */
     public function preUpdate()
     {
-        $this->setUpdateAt(new \DateTime());
+        $this->setUpdateAt(new DateTime());
     }
 
 }

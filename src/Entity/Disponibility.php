@@ -52,7 +52,7 @@ class Disponibility
     /**
      * @var Reservation
      *
-     * @ORM\ManyToOne(targetEntity="Reservation")
+     * @ORM\ManyToOne(targetEntity="Reservation", inversedBy="disponibilities")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="reservation_id", referencedColumnName="id")
      * })
@@ -135,8 +135,6 @@ class Disponibility
 
         return $this;
     }
-
-
 
     /**
      * @return Reservation
