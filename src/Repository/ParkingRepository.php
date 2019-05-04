@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Parking;
+use App\Entity\User;
 use DateTime;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
@@ -15,7 +16,12 @@ class ParkingRepository extends EntityRepository
     {
         $qb = $this->createQueryBuilder('p');
 
-        $qb = $qb->select('p')->addSelect('MIN(d.price) AS price')->innerJoin('p.disponibilities', 'd')->where($qb->expr()->gt('d.dateStart', ':now'))->orderBy('p.createdAt', 'DESC')->groupBy('p.id')->setParameter(':now', new DateTime());
+        $qb = $qb->select('p')->addSelect('MIN(d.price) AS price')
+            ->innerJoin('p.disponibilities', 'd')
+            ->where($qb->expr()->gt('d.dateStart', ':now'))
+            ->orderBy('p.createdAt', 'DESC')
+            ->groupBy('p.id')
+            ->setParameter(':now', new DateTime());
 
         $parkings = $qb->getQuery()->getResult();
 
@@ -28,19 +34,14 @@ class ParkingRepository extends EntityRepository
         return $result;
     }
 
-    public function findAllByUser(): array
+    public function findAllParksByUser(): array
     {
         $qb = $this->createQueryBuilder('p');
 
         $qb = $qb->select('p')
-        ->innerJoin('p.user', 'user')
-        ->where($qb->expr()->eq('p.user', 'u.id'))
-            ->setParameter(':user', 'u.id');
+        ->innerJoin('p.user', 'u')
+        ->where($qb->expr()->eq('p.user', 'u.id'));
 
         return $qb->getQuery()->getResult();
-
-
-
     }
-
 }

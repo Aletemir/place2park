@@ -3,12 +3,17 @@
 {% block title %}Place2Park | Mes Parkings{% endblock %}
 
 {% block body %}
+    <a href="{{ path('homepage') }}" class="btn btn-primary">Back homepage</a>
+    <a href="{{ path('user_show') }}" class="btn btn-primary">back profile</a>
 
     {% for user in users %}
         {{ user.firstname }}
         {{ user.lastname }}
+
     {% endfor %}
 
-
+    {% for parking in parkings %}
+{{ include('parking/card_park_user.html.twig') }}
+    {% endfor %}
 {% endblock %}
 

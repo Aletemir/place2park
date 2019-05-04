@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Mes parkings possédés {%  endblock %}
+
+
+
+{% block body %}
+        {{ parking.id }}
+        {{ parking.title }}
+        {{ parking.description }}
+
+    <a href="{{ path('parking_edit', {'id' : parking.id }) }}" class="btn btn-primary">Edit</a>
+{% endblock %}

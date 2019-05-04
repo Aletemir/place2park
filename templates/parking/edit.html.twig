@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Place2Park | Modifier votre parking
+{% endblock %}
+
+{% block body %}
+    <h1>Edit parking</h1>
+
+    {{ form_start(form) }}
+    {{ form_row(form.title) }}
+    <button class="btn">{{ button_label|default('save') }}</button>
+    {{ form_end(form) }}
+
+{% endblock %}
+
