@@ -31,6 +31,13 @@
         <a href="{{ path('show_parks') }}" class="btn btn-primary">back page search</a>
         <a href="{{ path('homepage') }}" class="btn btn-secondary">back homepage</a>
     </div>
+
+    {% for user in users  %}
+        {% if user.id == parking.user.id%}
+            <a href="{{ path('parking_edit', {'id' : parking.id}) }}" class="btn btn-primary">Modifier votre annonce</a>
+        {% endif %}
+    {% endfor %}
+
     <div class="parking_page_container m-2">
         <img src="{{ asset('uploads/' ~ parking.picture) }}" class="card-img-top" alt="parking's pictures"
              style="height: 50%">
@@ -50,7 +57,11 @@
         {{ disponibility.dateEnd|date('d/m/Y') }}
     {% endfor %}
 </div>
+    {% if app.user %}
     <a href="{{ path('add_new_reservation' ,{ 'parkingName' : parking.title}) }}">Réservez votre parking !</a>
+        {% else %}
+            <a href="{{ path('app_login') }}">Connectez vous pour reserver</a>
+    {% endif %}
 
 {% endblock %}
 

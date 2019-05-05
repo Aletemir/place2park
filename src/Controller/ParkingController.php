@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  *
  */
-class ParkingController extends BaseController
+class   ParkingController extends BaseController
 {
 
     /**

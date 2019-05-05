@@ -18,7 +18,7 @@ class ParkingRepository extends EntityRepository
 
         $qb = $qb->select('p')->addSelect('MIN(d.price) AS price')
             ->innerJoin('p.disponibilities', 'd')
-            ->where($qb->expr()->gt('d.dateStart', ':now'))
+            ->where($qb->expr()->gt('d.dateEnd', ':now'))
             ->orderBy('p.createdAt', 'DESC')
             ->groupBy('p.id')
             ->setParameter(':now', new DateTime());
@@ -40,7 +40,8 @@ class ParkingRepository extends EntityRepository
 
         $qb = $qb->select('p')
         ->innerJoin('p.user', 'u')
-        ->where($qb->expr()->eq('p.user', 'u.id'));
+        ->where($qb->expr()->eq('p.user', ':user'))
+            ->setParameter(":user", 'u.id');
 
         return $qb->getQuery()->getResult();
     }

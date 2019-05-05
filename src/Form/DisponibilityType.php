@@ -23,12 +23,10 @@ class DisponibilityType extends AbstractType
     {
         $builder ->add('date_start', DateType::class, [
             'widget' => 'choice',
-            'constraints' => new GreaterThanOrEqual('today'),
             'label' => 'Début'
         ])
             ->add('date_end', DateType::class, [
                 'widget' => 'choice',
-                'constraints' => new GreaterThanOrEqual('date_start'),
                 'label' => 'Fin'
             ])
             ->add('price', IntegerType::class, [

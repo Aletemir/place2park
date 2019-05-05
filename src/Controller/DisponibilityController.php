@@ -33,7 +33,7 @@ class DisponibilityController extends AbstractController
             $em->persist($parkDispo);
             $em->flush();
 //            TODO this route have to redirect to user list of park
-            return $this->redirectToRoute('show_park');
+            return $this->redirectToRoute('show_parks');
         }
         return $this->render('disponibility/_new_disponibility.html.twig', ['form' => $form->createView()]);
     }
