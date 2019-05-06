@@ -6,14 +6,8 @@
     <a href="{{ path('homepage') }}" class="btn btn-primary">Back homepage</a>
     <a href="{{ path('user_show') }}" class="btn btn-primary">back profile</a>
 
-    {% for user in users %}
-        {{ user.firstname }}
-        {{ user.lastname }}
+    {{ user.lastname }} {{ user.firstname }}
 
-    {% endfor %}
-
-    {% for parking in parkings %}
-{{ include('parking/card_park_user.html.twig') }}
-    {% endfor %}
+    {{ user.parking.id }}
 {% endblock %}
 

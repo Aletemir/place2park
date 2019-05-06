@@ -34,7 +34,7 @@
 
     {% for user in users  %}
         {% if user.id == parking.user.id%}
-            <a href="{{ path('parking_edit', {'id' : parking.id}) }}" class="btn btn-primary">Modifier votre annonce</a>
+            <a href="{{ path('parking_edit') }}" class="btn btn-primary">Modifier votre annonce</a>
         {% endif %}
     {% endfor %}
 
@@ -58,9 +58,9 @@
     {% endfor %}
 </div>
     {% if app.user %}
-    <a href="{{ path('add_new_reservation' ,{ 'parkingName' : parking.title}) }}">Réservez votre parking !</a>
+    <a href="{{ path('add_new_reservation' , { 'parkingName' : parking.title}) }}" class="btn btn-success">Réservez votre parking !</a>
         {% else %}
-            <a href="{{ path('app_login') }}">Connectez vous pour reserver</a>
+            <a href="{{ path('app_login') }}" class="btn btn-primary">Connectez vous pour réserver</a>
     {% endif %}
 
 {% endblock %}

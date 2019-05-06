@@ -61,20 +61,11 @@ class   ParkingController extends BaseController
         ]);
     }
 
-    /**
-     * @Route("/user/parks", name="user_parks_list")
-     */
-    public function showAllParkPossessed()
-    {
-        $users = $this->getDoctrine()->getRepository(User::class)->findBy(["id" => $this->getUser()]);
-        dump($users);
-        $parksUser = $this->getDoctrine()->getRepository(Parking::class)->findAllParksByUser();
-        dump($parksUser);
-        return $this->render('user/show_user_parking_possessed.html.twig', ['users' => $users, 'parkings' => $parksUser,]);
-    }
 
     /**
-     * @Route("/user/{id}" , name="show_one_park_by_user")
+     * @Route("/user/{parkName}" , name="show_one_park_by_user")
+     * @param Parking $parking
+     * @return Response
      */
     public function showOneParkOfUser(Parking $parking)
     {

@@ -122,7 +122,7 @@ class Parking
     /**
      * @var User
      *
-     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="parking")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      * })
@@ -137,6 +137,7 @@ class Parking
     public function __construct()
     {
         $this->disponibilities = new ArrayCollection();
+        $this->user = new ArrayCollection();
     }
 
     /**

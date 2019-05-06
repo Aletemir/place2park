@@ -46,6 +46,18 @@ class UserController extends AbstractController
         return $this->render('user/edit.html.twig', ['user' => $user, 'form' => $form->createView(),]);
     }
 
+    /**
+     * @Route("/{id}/parks", name="user_parks_list")
+     */
+    public function showAllParkPossessed(User $user)
+    {
+        dump($user);
+//        $users = $this->getDoctrine()->getRepository(User::class)->findBy(["id" => $this->getUser()]);
+        return $this->render('user/show_user_parking_possessed.html.twig', [
+            'user' => $user
+        ]);
+    }
+
 
 
 }

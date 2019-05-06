@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use DateTime;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\HttpFoundation\File\File;
@@ -78,18 +80,23 @@ class User implements UserInterface
      */
     private $pictureFile;
     /**
-     * @var \DateTime
+     * @var DateTime
      *
      * @ORM\Column(name="created_at", type="datetime", length=255, nullable=false)
      */
     private $createdAt;
 
     /**
-     * @var \DateTime|null
+     * @var DateTime|null
      *
      * @ORM\Column(name="update_at", type="datetime", length=255, nullable=true)
      */
     private $updateAt;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Parking", mappedBy="user")
+     */
+    private $parking;
 
 //    private $reservations;
 
@@ -182,7 +189,7 @@ class User implements UserInterface
         $this->pictureFile = $picture;
 
         if ($picture) {
-            $this->updateAt = new \DateTime('now');
+            $this->updateAt = new DateTime('now');
         }
     }
 
@@ -262,15 +269,15 @@ class User implements UserInterface
     }
 
     /**
-     * @return \DateTime
+     * @return DateTime
      */
-    public function getCreatedAt(): ?\DateTimeInterface
+    public function getCreatedAt(): ?DateTimeInterface
     {
         return $this->createdAt;
     }
 
 
-    public function setCreatedAt(?\DateTimeInterface $createdAt): self
+    public function setCreatedAt(?DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
 
@@ -297,7 +304,7 @@ class User implements UserInterface
      */
     public function prePersist()
     {
-        $this->createdAt = new \DateTime();
+        $this->createdAt = new DateTime();
     }
 
     /**
@@ -305,7 +312,22 @@ class User implements UserInterface
      */
     public function preUpdate()
     {
-        $this->setUpdateAt(new \DateTime());
+        $this->setUpdateAt(new DateTime());
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function getParking(): ?Parking
+    {
+        return $this->parking;
+    }
+
+    public function setParking($parking): self
+    {
+        $this->parking = $parking;
+        return $this;
     }
 
 }

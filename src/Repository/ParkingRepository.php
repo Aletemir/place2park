@@ -34,15 +34,4 @@ class ParkingRepository extends EntityRepository
         return $result;
     }
 
-    public function findAllParksByUser(): array
-    {
-        $qb = $this->createQueryBuilder('p');
-
-        $qb = $qb->select('p')
-        ->innerJoin('p.user', 'u')
-        ->where($qb->expr()->eq('p.user', ':user'))
-            ->setParameter(":user", 'u.id');
-
-        return $qb->getQuery()->getResult();
-    }
 }
