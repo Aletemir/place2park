@@ -37,12 +37,17 @@
         <div class="header_title_container d-flex w-75 m-auto flex-wrap">
             <h1 class="header_title_name text-center w-100 ">PLACE 2 PARK</h1>
             <div class="header_button_container d-flex w-50 m-auto justify-content-center align-content-between">
+
                 <a href="{{ path('show_parks') }}" class="homepage_button_search btn btn-success">
                     CHERCHER UNE PLACE
                 </a>
+                {% if app.user %}
                 <a href="{{ path('new_parking') }}" class="homepage_button_deposit btn btn-secondary">DEPOSER UNE
-                    ANNONCE</a>
-
+                    ANNONCE
+                </a>
+                    {% else %}
+                        <a href="{{ path('app_login') }}" class="homepage_button_deposit btn btn-secondary">Déposer une annonce</a>
+                {% endif %}
 
 
             </div>

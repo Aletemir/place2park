@@ -1,11 +1,13 @@
 BACK
-faire formulaire d'édition de l'utilisateur, prendre exemmple sur Traouve, a faire ce matin
+/!\  faire formulaire d'édition de l'utilisateur, prendre exemmple sur Traouve, a faire ce matin /!\
 
-faire la limite de resa
+/!\ créer la page User de réservation /!\
+
+faire la limite de resa <-- pas urgent
 gérer la gestion des avis parkings
 gérer la gestion des avis utilisateurs
-faire TOUTE la partie user
-gérer les coordonée géoloc dans le register parking
+gérer les coordonée géoloc dans le register parking <-- pas urgent, a voir pour la V2
+
 
 
 FRONT

@@ -350,7 +350,7 @@ class Parking
     /**
      * @return mixed
      */
-    public function getDisponibilities()
+    public function getDisponibilities(): ?Disponibility
     {
         return $this->disponibilities;
     }

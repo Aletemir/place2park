@@ -2,11 +2,8 @@
 
 namespace App\Repository;
 
-use App\Entity\Parking;
-use App\Entity\User;
 use DateTime;
 use Doctrine\ORM\EntityRepository;
-use Doctrine\ORM\QueryBuilder;
 
 
 class ParkingRepository extends EntityRepository

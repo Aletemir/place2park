@@ -29,8 +29,9 @@ class UserRepository extends ServiceEntityRepository
             ->innerJoin('disponibility.parking', 'parking')
             ->where($qb->expr()->eq('user.id', 'reservations.user'))
             ->andWhere($qb->expr()->eq('reservations.id', 'disponibility.reservation'))
-            ->andwhere($qb->expr()->eq('parking.id', 'disponibility.parking'));
-//            ->orderBy('reservation.dateStart', 'DESC');
+            ->andwhere($qb->expr()->eq('parking.id', 'disponibility.parking'))
+            ->groupBy('reservations.dateStart');
+
 
         return $qb->getQuery()->getResult();
     }

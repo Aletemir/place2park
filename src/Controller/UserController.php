@@ -67,13 +67,13 @@ class UserController extends AbstractController
      */
     public function showAllRentedPark(User $user)
     {
-        dump($user);
+//        dump($user);
         $userRentedPark = $this->getDoctrine()->getRepository(User::class)->findParkingFromUserReservation();
-        dump($userRentedPark);
+//        dump($userRentedPark);die();
 
         return $this->render('user/show_user_parking_rented.html.twig', [
             'user' => $user,
-            'reservations' => $userRentedPark,
+            'userReservations' => $userRentedPark,
         ]);
     }
 
