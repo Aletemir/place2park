@@ -41,7 +41,7 @@ class Reservation
     /**
      * @var User
      *
-     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="reservations")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      * })
@@ -52,9 +52,6 @@ class Reservation
      */
     private $disponibilities;
 
-    /**
-     * @return int
-     */
 
     public function __construct()
     {
@@ -98,20 +95,6 @@ class Reservation
     public function setDateEnd(DateTime $dateEnd): self
     {
         $this->dateEnd = $dateEnd;
-        return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isPaid(): ?bool
-    {
-        return $this->paid;
-    }
-
-    public function setPaid(bool $paid): self
-    {
-        $this->paid = $paid;
         return $this;
     }
 

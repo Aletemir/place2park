@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Parking;
+use App\Entity\Reservation;
 use App\Entity\User;
 use App\Form\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -58,6 +59,21 @@ class UserController extends AbstractController
         return $this->render('user/show_user_parking_possessed.html.twig', [
             'user' => $user,
             'parkings' => $parking,
+        ]);
+    }
+
+    /**
+     * @Route("/{id}/rentedParks/", name="user_parks_rented")
+     */
+    public function showAllRentedPark(User $user)
+    {
+        dump($user);
+        $userRentedPark = $this->getDoctrine()->getRepository(User::class)->findParkingFromUserReservation();
+        dump($userRentedPark);
+
+        return $this->render('user/show_user_parking_rented.html.twig', [
+            'user' => $user,
+            'reservations' => $userRentedPark,
         ]);
     }
 

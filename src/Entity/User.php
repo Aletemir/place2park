@@ -98,7 +98,11 @@ class User implements UserInterface
      */
     private $parking;
 
-//    private $reservations;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Reservation", mappedBy="user")
+     */
+    private $reservations;
 
     public function getId(): ?int
     {
@@ -329,5 +333,24 @@ class User implements UserInterface
         $this->parking = $parking;
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getReservations()
+    {
+        return $this->reservations;
+    }
+
+    /**
+     * @param mixed $reservations
+     */
+    public function setReservations($reservations): self
+    {
+        $this->reservations = $reservations;
+        return $this;
+    }
+
+
 
 }

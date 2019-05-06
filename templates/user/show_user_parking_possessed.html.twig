@@ -10,7 +10,8 @@
 
     {% for parking in parkings  %}
         {{ parking.id }}
-    {% endfor %}
+{{ include('parking/card_park_user.html.twig') }}
+       {% endfor %}
 
 
 {% endblock %}

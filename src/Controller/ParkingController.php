@@ -63,9 +63,7 @@ class   ParkingController extends BaseController
 
 
     /**
-     * @Route("/user/{parkName}" , name="show_one_park_by_user")
-     * @param Parking $parking
-     * @return Response
+     * @Route("/user/{id}" , name="show_one_park_by_user")
      */
     public function showOneParkOfUser(Parking $parking)
     {

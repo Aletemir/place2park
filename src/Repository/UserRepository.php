@@ -2,11 +2,9 @@
 
 namespace App\Repository;
 
-use App\Entity\Parking;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
-use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @method User|null find($id, $lockMode = null, $lockVersion = null)
@@ -21,22 +19,20 @@ class UserRepository extends ServiceEntityRepository
         parent::__construct($registry, User::class);
     }
 
-    /**
-     * @param User $user
-     * @return array
-     */
-    public function findAllParksByUser(): array
+    public function findParkingFromUserReservation(): array
     {
-        $qb = $this->createQueryBuilder('u');
+        $qb = $this->createQueryBuilder('user');
 
-        $qb = $qb ->select('u')
-            ->innerJoin('u.parking' , 'p')
-            ->where($qb->expr()->eq('u.id', 'p.user'))
-            ->orderBy('p.createdAt', 'DESC');
+        $qb = $qb ->select('user', 'reservations', 'disponibility', 'parking')
+            ->innerJoin('user.reservations', 'reservations')
+            ->innerJoin('reservations.disponibilities', 'disponibility')
+            ->innerJoin('disponibility.parking', 'parking')
+            ->where($qb->expr()->eq('user.id', 'reservations.user'))
+            ->andWhere($qb->expr()->eq('reservations.id', 'disponibility.reservation'))
+            ->andwhere($qb->expr()->eq('parking.id', 'disponibility.parking'));
+//            ->orderBy('reservation.dateStart', 'DESC');
 
         return $qb->getQuery()->getResult();
-
     }
-
 
 }
