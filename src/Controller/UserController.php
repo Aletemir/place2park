@@ -52,9 +52,12 @@ class UserController extends AbstractController
     public function showAllParkPossessed(User $user)
     {
         dump($user);
+        $parking = $this->getDoctrine()->getRepository(Parking::class)->findBy(['user' => $this->getUser()]);
+        dump($parking);
 //        $users = $this->getDoctrine()->getRepository(User::class)->findBy(["id" => $this->getUser()]);
         return $this->render('user/show_user_parking_possessed.html.twig', [
-            'user' => $user
+            'user' => $user,
+            'parkings' => $parking,
         ]);
     }
 

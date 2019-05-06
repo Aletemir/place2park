@@ -319,7 +319,7 @@ class User implements UserInterface
     /**
      * @return mixed
      */
-    public function getParking(): ?Parking
+    public function getParking()
     {
         return $this->parking;
     }

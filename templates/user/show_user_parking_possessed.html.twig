@@ -8,6 +8,10 @@
 
     {{ user.lastname }} {{ user.firstname }}
 
-    {{ user.parking.id }}
+    {% for parking in parkings  %}
+        {{ parking.id }}
+    {% endfor %}
+
+
 {% endblock %}
 
