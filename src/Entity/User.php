@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use DateTime;
 use DateTimeInterface;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\HttpFoundation\File\File;
@@ -102,7 +103,12 @@ class User implements UserInterface
     /**
      * @ORM\OneToMany(targetEntity="Reservation", mappedBy="user")
      */
-    private $reservations;
+    private $reservation;
+
+    public function __construct()
+    {
+        $this->reservation = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -337,17 +343,17 @@ class User implements UserInterface
     /**
      * @return mixed
      */
-    public function getReservations()
+    public function getreservation()
     {
-        return $this->reservations;
+        return $this->reservation;
     }
 
     /**
-     * @param mixed $reservations
+     * @param mixed $reservation
      */
-    public function setReservations($reservations): self
+    public function setreservation($reservation): self
     {
-        $this->reservations = $reservations;
+        $this->reservation = $reservation;
         return $this;
     }
 

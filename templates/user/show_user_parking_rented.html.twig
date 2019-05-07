@@ -5,12 +5,20 @@
 
 {% block body %}
 
+    <a href="{{ path('user_index') }}" class="btn btn-success">Index user</a>
+
     {{ user.firstname }} {{ user.lastname }}
 
-{#    {% for userReservation  in  userReservations %}#}
-{#        {% for test1 in userReservations.reservations.collection.element %}#}
-{#                {{ test2.id }}#}
-        {% endfor %}
+    {% for userRentedPark in userRentedPark %}
+        <img src="{{ asset('uploads/' ~ userRentedPark.picture) }}" class="card-img-top" style="height: 50%"
+             alt="{{ userRentedPark.title }}">
+        {{ userRentedPark.title }}
+        {{ userRentedPark.description }}
+        {{ userRentedPark.price }} € / jours
+        {{ userRentedPark.user.firstname }}
+        <a href="{{ path('parking_edit', {'id' : userRentedPark.id}) }}" class="btn btn-success">Edit</a>
     {% endfor %}
+
+
 {% endblock %}
 

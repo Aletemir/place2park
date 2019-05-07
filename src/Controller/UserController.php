@@ -47,36 +47,5 @@ class UserController extends AbstractController
         return $this->render('user/edit.html.twig', ['user' => $user, 'form' => $form->createView(),]);
     }
 
-    /**
-     * @Route("/{id}/parks", name="user_parks_list")
-     */
-    public function showAllParkPossessed(User $user)
-    {
-        dump($user);
-        $parking = $this->getDoctrine()->getRepository(Parking::class)->findBy(['user' => $this->getUser()]);
-        dump($parking);
-//        $users = $this->getDoctrine()->getRepository(User::class)->findBy(["id" => $this->getUser()]);
-        return $this->render('user/show_user_parking_possessed.html.twig', [
-            'user' => $user,
-            'parkings' => $parking,
-        ]);
-    }
-
-    /**
-     * @Route("/{id}/rentedParks/", name="user_parks_rented")
-     */
-    public function showAllRentedPark(User $user)
-    {
-//        dump($user);
-        $userRentedPark = $this->getDoctrine()->getRepository(User::class)->findParkingFromUserReservation();
-//        dump($userRentedPark);die();
-
-        return $this->render('user/show_user_parking_rented.html.twig', [
-            'user' => $user,
-            'userReservations' => $userRentedPark,
-        ]);
-    }
-
-
 
 }

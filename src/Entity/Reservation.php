@@ -40,7 +40,7 @@ class Reservation
     /**
      * @var User
      *
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="reservations")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="reservation")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      * })
@@ -55,7 +55,6 @@ class Reservation
     public function __construct()
     {
         $this->disponibilities = new ArrayCollection();
-        $this->user = new ArrayCollection();
     }
 
     public function getId(): int

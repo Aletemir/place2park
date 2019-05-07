@@ -31,4 +31,20 @@ class ParkingRepository extends EntityRepository
         return $result;
     }
 
+    public function findParkingFromUserreservation(): array
+    {
+        $qb = $this->createQueryBuilder('p');
+
+        $qb = $qb ->select('p', 'd', 'r', 'u')
+            ->innerJoin('p.disponibilities', 'd')
+            ->innerJoin('d.reservation', 'r')
+            ->innerJoin('r.user', 'u')
+            ->where($qb->expr()->eq('p.id', 'd.parking'))
+            ->andWhere($qb->expr()->eq('d.reservation', 'r.id'))
+            ->andwhere($qb->expr()->eq('r.user', 'u.id'));
+
+        return $qb->getQuery()->getResult();
+    }
+
+
 }
