@@ -61,17 +61,19 @@ class   ParkingController extends BaseController
         ]);
     }
 
-
-    /**
-     * @Route("/user/{id}" , name="show_one_park_by_user")
-     */
-    public function showOneParkOfUser(Parking $parking)
-    {
-        dump($parking);
-        return $this->render('parking/show_one_park_possessed.html.twig', [
-            'parking' => $parking,
-            ]);
-    }
+//
+//    /**
+//     * @Route("/user/{id}" , name="show_one_park_by_user")
+//     */
+//    public function showOneParkOfUser(Parking $parking)
+//    {
+//        $users = $this->getDoctrine()->getRepository(User::class)->findBy(['id' => $this->getUser()]);
+//        dump($parking);
+//        return $this->render('parking/show.html.twig', [
+//            'parking' => $parking,
+//            'users'=> $user,
+//            ]);
+//    }
 
     /**
      * @Route("/parks" , name="show_parks")
@@ -91,7 +93,10 @@ class   ParkingController extends BaseController
     public function showAllParkPossessed(User $user)
     {
         dump($user);
-        $parking = $this->getDoctrine()->getRepository(Parking::class)->findBy(['user' => $this->getUser()]);
+        $parking = $this->getDoctrine()->getRepository(Parking::class)
+            ->findBy(
+            ['user' => $this->getUser()],
+            ['id' => 'DESC']);
         dump($parking);
 //        $users = $this->getDoctrine()->getRepository(User::class)->findBy(["id" => $this->getUser()]);
         return $this->render('user/show_user_parking_possessed.html.twig', [
@@ -121,20 +126,18 @@ class   ParkingController extends BaseController
      */
     public function edit(Request $request,Parking $parking): Response
     {
-     $form = $this -> createForm(ParkingType::class, $parking);
-     $form->handleRequest($request);
+        $form = $this->createForm(ParkingType::class, $parking);
+        $form->handleRequest($request);
 
-     if ($form->isSubmitted()&& $form->isValid()  ) {
-         $this->getDoctrine()->getManager()->flush();
+        if ($form->isSubmitted() && $form->isValid()){
+            $this->getDoctrine()->getManager()->flush();
 
-         return $this->redirectToRoute('user_parks_list', ['id' => $parking->getId()]);
-     }
-
-     return $this->render('parking/edit.html.twig', [
-         'parking'=> $parking,
-         'form' => $form->createView()
-     ]);
-
+            return $this->redirectToRoute('show_park', ['id' => $parking->getId()]);
+        }
+        return $this->render('parking/edit.html.twig', [
+            'parking' => $parking,
+            'formParking'=> $form->createView()
+        ]);
     }
 
     /**

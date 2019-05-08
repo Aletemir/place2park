@@ -1,0 +1,18 @@
+{{ form_start(formParking) }}
+    {{ form_row(formParking.title , {label : 'Titre de l\'annonce '}) }}
+    {{ form_row(formParking.type) }}
+    {{ form_row(formParking.pictureFile) }}
+    {{ form_row(formParking.street) }}
+    {{ form_row(formParking.district) }}
+    {{ form_row(formParking.city) }}
+    {{ form_row(formParking.description) }}
+
+<button class="btn btn-success">{{ button_label|default('Sauvegarder') }}</button>
+{{ form_end(formParking) }}
+
+{#{{ form_start(disponibilite) }}#}
+{#{{ form_row(disponibilite.date_start) }}#}
+{# {{ form_row(disponibilite.date_end) }}#}
+{# {{ form_row(disponibilite.price) }}#}
+{#<button class="btn btn-success">{{ button_label|default('Sauvegarder') }}</button>#}
+{#{{ form_end(disponibilite) }}#}

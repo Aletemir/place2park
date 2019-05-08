@@ -4,24 +4,25 @@
 
 {% block body %}
 
-    {% if app.user %}
-        {% for user in users %}
-            <div class="user_infos d-flex justify-content-end">
-                {% if app.user.picture %}
-                    <img class="user_picture" src="{{ asset('uploads/' ~ user.picture ) }}"
-                         alt="photo de {{ user.lastname }} {{ user.firstname }}">
-                {% else %}
-                    <img class="user_picture user_picture-anonym" src="../../public/uploads/users/anonym_user.png"
-                         alt="">
-                {% endif %}
-                <div class="user_name">
-                    <p>{{ user.firstname }} {{ user.lastname }}</p>
-                </div>
-            </div>
-        {% endfor %}
-        <a class="header_button_user-profil btn btn-secondary" href="{{ path('user_show') }}">Mon profil</a>
-        <a class="header_button_user-profil btn btn-danger" href="{{ path('app_logout') }}">Déco</a>
 
+    {% for user in users %}
+        <div class="user_infos d-flex justify-content-end">
+            {% if app.user.picture %}
+                <img class="user_picture" src="{{ asset('uploads/' ~ user.picture ) }}"
+                     alt="photo de {{ user.lastname }} {{ user.firstname }}">
+            {% else %}
+                <img class="user_picture user_picture-anonym" src="../../public/uploads/users/anonym_user.png"
+                     alt="">
+            {% endif %}
+            <div class="user_name">
+                <p>{{ user.firstname }} {{ user.lastname }}</p>
+            </div>
+        </div>
+    {% endfor %}
+
+    {% if app.user %}
+        <a class="header_button_user-profil btn btn-secondary" href="{{ path('user_index') }}">Mon profil</a>
+        <a class="header_button_user-profil btn btn-danger" href="{{ path('app_logout') }}">Déco</a>
     {% else %}
         <a href="{{ path('app_login') }}" class="header_button_login btn btn-primary">SE CONNECTER</a>
         <a href="{{ path('user_registration') }}" class="header_button_signin btn btn-secondary">S'INSCRIRE</a>
@@ -32,9 +33,9 @@
         <a href="{{ path('homepage') }}" class="btn btn-secondary">back homepage</a>
     </div>
 
-    {% for user in users  %}
-        {% if user.id == parking.user.id%}
-            <a href="{{ path('parking_edit') }}" class="btn btn-primary">Modifier votre annonce</a>
+    {% for user in users %}
+        {% if user.id == parking.user.id %}
+            <a href="{{ path('parking_edit', {'id' : parking.id}) }}" class="btn btn-primary">Modifier votre annonce</a>
         {% endif %}
     {% endfor %}
 
@@ -50,17 +51,20 @@
         <p>{{ parking.district|upper }} quartier</p>
         <p>{{ parking.description }}</p>
     </div>
-<div class="dispo_block">
-    {% for disponibility in parking.disponibilities  %}
-        {{ disponibility.dateStart|date('d/m/Y') }}
-        <br>
-        {{ disponibility.dateEnd|date('d/m/Y') }}
-    {% endfor %}
-</div>
-    {% if app.user %}
-    <a href="{{ path('add_new_reservation' , { 'parkingName' : parking.title}) }}" class="btn btn-success">Réservez votre parking !</a>
-        {% else %}
-            <a href="{{ path('app_login') }}" class="btn btn-primary">Connectez vous pour réserver</a>
+    <div class="dispo_block">
+        {% for disponibility in parking.disponibilities %}
+            {{ disponibility.dateStart|date('d/m/Y') }}
+            <br>
+            {{ disponibility.dateEnd|date('d/m/Y') }}
+        {% endfor %}
+    </div>
+
+    {% if app.user and app.user.id != parking.user.id %}
+        <a href="{{ path('add_new_reservation' , { 'parkingName' : parking.title}) }}" class="btn btn-success">Réservez votre parking !</a>
+    {% elseif app.user == false and app.user != parking.user.id %}
+        <a href="{{ path('app_login') }}" class="btn btn-primary">Connectez vous pour réserver</a>
+    {% else %}
+
     {% endif %}
 
 {% endblock %}

@@ -11,7 +11,7 @@
             <div class="parking_district">{{ parking.district }} quartier</div>
         </div>
 
-        <a href="{{ path('show_one_park_by_user', { 'id' : parking.id }) }}" class="btn btn-primary">{{ 'détail de l\'annonce'|upper }}</a>
+        <a href="{{ path('show_park', { 'id' : parking.id }) }}" class="btn btn-primary">{{ 'détail de l\'annonce'|upper }}</a>
 
     </div>
 </div>

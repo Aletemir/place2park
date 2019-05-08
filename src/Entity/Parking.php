@@ -135,6 +135,7 @@ class Parking
      */
     private $disponibilities;
 
+
     public function __construct()
     {
         $this->disponibilities = new ArrayCollection();
@@ -374,6 +375,11 @@ class Parking
         return $price;
     }
 
+    public function setPrice(): self
+    {
+        $this->setPrice();
+        return $this;
+    }
     /**
      * @ORM\PrePersist()
      */

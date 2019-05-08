@@ -5,7 +5,9 @@ namespace App\Controller;
 use App\Entity\Disponibility;
 use App\Entity\Parking;
 use App\Form\DisponibilityType;
+use phpDocumentor\Reflection\Types\This;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Bundle\FrameworkBundle\Tests\CacheWarmer\testRouterInterfaceWithoutWarmebleInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -48,6 +50,23 @@ class DisponibilityController extends AbstractController
         dump($park);
         return $this->render('disponibility/index.html.twig', [
             'disponibility'=>$disponibility,
+        ]);
+    }
+
+    public function edit(Request $request, Disponibility $disponibility) : Response
+    {
+        $form = $this->createForm(DisponibilityType::class, $disponibility);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('parking_edit' ,['id' => $disponibility->getId()]);
+        }
+
+        return $this->render('parking/edit.html.twig', [
+            'disponibility' => $disponibility,
+            'disponibilite' => $form->createView(),
         ]);
     }
 }

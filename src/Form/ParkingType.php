@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Parking;
 use App\Entity\Type;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -28,7 +29,8 @@ class ParkingType extends AbstractType
                 'label' => 'Type de parking'
             ))
             ->add('pictureFile', VichImageType::class, [
-                'label' => 'photo'
+                'label' => 'photo',
+                'required' => false
             ])
             ->add('description', TextareaType::class, [
                 'label' => 'Description'
@@ -42,6 +44,10 @@ class ParkingType extends AbstractType
             ->add('street', TextType::class, [
                 'label' => 'Rue'
             ])
+//            TODO voir pour le prix dans le formulaire edit du parking
+//            ->add('price', IntegerType::class, [
+//                'label' => 'Prix',
+//            ])
         ;
     }
 

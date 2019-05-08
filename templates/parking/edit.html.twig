@@ -6,11 +6,13 @@
 
 {% block body %}
     <h1>Edit parking</h1>
+{#    {{ form_start(formParking) }}#}
+{#{{ form_widget(formParking) }}#}
+{#    <button class="btn btn-primary">Editer</button>#}
+{#    {{ form_end(formParking) }}#}
+    {{ include('parking/_editForm.html.twig') }}
 
-    {{ form_start(form) }}
-    {{ form_row(form.title) }}
-    <button class="btn">{{ button_label|default('save') }}</button>
-    {{ form_end(form) }}
+
 
 {% endblock %}
 

@@ -4,10 +4,10 @@
 
 {% block body %}
     <a href="{{ path('homepage') }}" class="btn btn-primary">Back homepage</a>
-    <a href="{{ path('user_show') }}" class="btn btn-primary">back profile</a>
+    <a href="{{ path('user_index') }}" class="btn btn-primary">back profil</a>
 
     {{ user.lastname }} {{ user.firstname }}
-
+    <br>
     {% for parking in parkings  %}
         {{ parking.id }}
 {{ include('parking/card_park_user.html.twig') }}

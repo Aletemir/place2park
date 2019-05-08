@@ -14,21 +14,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class UserController extends AbstractController
 {
     /**
-     * @Route("/", name="user_index", methods="GET")
+     * @Route("/user", name="user_index")
      */
     public function index(): Response
     {
 
-        $users = $this->getDoctrine()->getRepository(User::class)->findAll();
-
-        return $this->render('user/index.html.twig', ['users' => $users]);
-    }
-
-    /**
-     * @Route("/user", name="user_show")
-     */
-    public function showUser()
-    {
         $users = $this->getDoctrine()->getRepository(User::class)->findBy(["id"=> $this->getUser()]);
         dump($users);
         return $this->render('user/index.html.twig', ['users' => $users]);
