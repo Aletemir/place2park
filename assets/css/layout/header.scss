@@ -1,0 +1,27 @@
+
+.header {
+
+  &_homepage {
+    background-image: url('../images/parkimg.jpeg');
+    height: 937px;
+    background-size: cover;
+    width: 100%;
+  }
+
+  &_title_name {
+    color: #F3F3F3F3;
+    font-family: Haettenschweiler;
+    font-size: 250px;
+    opacity: 1;
+  }
+
+  &_button-top {
+    height: 95px;
+  }
+
+
+
+  //&_parkings-page{
+  //  background: grey;
+  //}
+}

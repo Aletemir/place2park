@@ -4,36 +4,7 @@
 {% endblock %}
 {% block body %}
     <div class="header_homepage d-flex flex-wrap">
-        <div class="header_button-top d-flex align-items-center w-100 flex-wrap justify-content-end">
-            <div class="header_button-top-right w-25 d-flex justify-content-around">
-                {% if app.user %}
-                {% for user in users %}
-                    <div class="user_infos d-flex justify-content-end">
-
-                        {% if app.user.picture %}
-                            <img class="user_picture" src="{{ asset('uploads/' ~ user.picture ) }}"
-                                 alt="photo de {{ user.lastname }} {{ user.firstname }}">
-                        {% else %}
-                            <img class="user_picture user_picture-anonym"
-                                 src="../../public/uploads/users/anonym_user.png" alt="anonym user's photo ">
-                        {% endif %}
-                        <div class="user_name">
-
-                            <p>{{ user.firstname }} {{ user.lastname }}</p>
-                        </div>
-                    </div>
-                {% endfor %}
-                <a class="header_button_user-profil btn btn-primary" href="{{ path('user_index') }}">Mon profil</a>
-                <a class="header_button_user-profil btn btn-danger" href="{{ path('app_logout') }}">Déco</a>
-
-                {% else %}
-                <a href="{{ path('app_login') }}" class="header_button_login btn btn-primary">
-                    SE CONNECTER
-                </a>
-                <a href="{{ path('user_registration') }}" class="header_button_signin btn btn-secondary">S'INSCRIRE</a>
-            </div>
-            {% endif %}
-        </div>
+        {{ include('Default/user_layout.html.twig') }}
         <div class="header_title_container d-flex w-75 m-auto flex-wrap">
             <h1 class="header_title_name text-center w-100 ">PLACE 2 PARK</h1>
             <div class="header_button_container d-flex w-50 m-auto justify-content-center align-content-between">
@@ -42,15 +13,47 @@
                     CHERCHER UNE PLACE
                 </a>
                 {% if app.user %}
-                <a href="{{ path('new_parking') }}" class="homepage_button_deposit btn btn-secondary">DEPOSER UNE
-                    ANNONCE
-                </a>
-                    {% else %}
-                        <a href="{{ path('app_login') }}" class="homepage_button_deposit btn btn-secondary">Déposer une annonce</a>
+                    <a href="{{ path('new_parking') }}" class="homepage_button_deposit btn btn-secondary">DEPOSER UNE
+                        ANNONCE
+                    </a>
+                {% else %}
+                    <a href="{{ path('app_login') }}" class="homepage_button_deposit btn btn-secondary">Déposer une annonce</a>
                 {% endif %}
-
-
             </div>
+        </div>
+    </div>
+
+    <div class="main_homepage_container">
+        <div class="main_homepage_content_title">{{ 'le projet place 2 park'|upper }}</div>
+        <div class="main_homepage_container-top">
+            <div class="main_content_image-left">
+                <div class="main_content_title-top">{{ 'kézako ?'|upper }}</div>
+                <div class="maint_content_image"><img src="" alt=""></div>
+            </div>
+            <div class="main_content_text-right">Vous venez travailler en ville ? Vous habitez en ville et vous n'avez pas de parking attitré ?
+                Vous venez pour un Week end en ville et vous ne pouvez pas vous garer ?
+                Vous avez une place de parking mais elle vous est inutile ?
+                Et bien louer la place !
+                Elle sera la <span>Place to Park</span> !
+            </div>
+        </div>
+        <div class="main_homepage_container_middle">
+            <div class="main_title-top-left">{{ 'pourquoi déposer une annonce ?'|upper }}</div>
+            <div class="main_content_image"><img src="" alt=""></div>
+            <div class="main_content_text">Vous avez une place de parking innutile, une cour qui ne vous sert pas la journée, vous voyez cet espace vacant comme un manque à gagner ? Mettez en location votre place pour rendre service à un locataire le tout en arrondissant vos fin de mois !</div>
+            {% if app.user %}
+                <div class="main_homepage_button-cta"><a href="{{ path('new_parking') }}">{{ 'déposer une annonce'|upper }}</a></div>
+            {% else %}
+                <div class="main_homepage_button-cta"><a href="{{ path('app_login') }}"></a></div>
+            {% endif %}
+        </div>
+
+        <div class="main_homepage_container_bottom">
+            <div class="main_title-top-right">{{ 'pourquoi louer une place ?'|upper }}</div>
+            <div class="main_content_image"><img src="" alt=""></div>
+            <div class="main_content_text">Vous travaillez en ville ? Vous voyagez ? Trouver une place de parking est difficile ? Louer une place vous permettra de trouver une place facilement dans le quartier que vous chercher et à moindre coût !</div>
+            <div class="main_homepage_button-cta"><a href="{{ path('show_parks') }}">{{ 'déposer une annonce'|upper }}</a></div>
+
         </div>
     </div>
 

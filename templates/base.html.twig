@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 
 <head>
-    <meta lang="fr">
     <meta charset="UTF-8">
     <title>{% block title %}Place 2 Park {% endblock %}</title>
     {% block stylesheets %}
@@ -12,43 +11,12 @@
 
 <body>
 {% block body %}{% endblock %}
-<footer>
-    <div class="footer_social_media-left">
-        <a href="">
-            {#      TODO insert Facebook logo         #}
-            <img src="" alt="">
-        </a>
-        <a href="">
-            {#      TODO insert Twitter logo         #}
-            <img src="" alt="">
-        </a>
-        <a href="">
-            {#      TODO insert Instagram logo         #}
-            <img src="" alt="">
-        </a>
-        <a href="">
-            {#      TODO insert LinkedInlogo         #}
-            {#      ?  Possibly fontAwesome icon or other  ?   #}
-            <img src="" alt="">
-        </a>
-    </div>
-    <div class="footer_name-middle">
-        <h3>{{ 'place2park'|upper }}</h3>
-        <div class="footer_name_link-middle">
-            <a href="">Mention légales</a>
-            <a href="">RGPD</a>
-            <a href="">Politique cookies</a>
-        </div>
-        <div class="footer_nav-right">
-            <h4 class="footer_nav_title">{{ 'navigation rapide'|upper }}</h4>
-            <div class="footer_nav_content">
-                {#  todo insert link to important page #}
-            </div>
-        </div>
-    </div>
-</footer>
+{{ include('Default/footer.html.twig') }}
 {% block javascripts %}
     {{ encore_entry_script_tags('app') }}
+    <script src="../node_modules/bootstrap/js">
+
+    </script>
 {% endblock %}
 <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>

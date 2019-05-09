@@ -1,0 +1,30 @@
+<div class="header_button-top d-flex align-items-center w-100 flex-wrap justify-content-end">
+    <div class="header_button-top-right w-25 d-flex justify-content-around">
+        {% if app.user %}
+        {% for user in users %}
+            <div class="user_infos d-flex justify-content-end">
+
+                {% if app.user.picture %}
+                    <img class="user_picture" src="{{ asset('uploads/' ~ user.picture ) }}"
+                         alt="photo de {{ user.lastname }} {{ user.firstname }}">
+                {% else %}
+                    <img class="user_picture user_picture-anonym"
+                         src="../../public/uploads/users/anonym_user.png" alt="anonym user's photo ">
+                {% endif %}
+                <div class="user_name">
+
+                    <p>{{ user.firstname }} {{ user.lastname }}</p>
+                </div>
+            </div>
+        {% endfor %}
+        <a class="header_button_user-profil btn btn-primary" href="{{ path('user_index') }}">{{ 'mon profil'|upper }}</a>
+        <a class="header_button_user-profil btn btn-danger" href="{{ path('app_logout') }}">{{ 'déconnexion'|upper }}</a>
+
+        {% else %}
+        <a href="{{ path('app_login') }}" class="header_button_login btn btn-primary">
+            {{ 'se connecter'|upper }}
+        </a>
+        <a href="{{ path('user_registration') }}" class="header_button_signin btn btn-secondary">{{ 's\'inscrire'|upper }}</a>
+    </div>
+    {% endif %}
+</div>

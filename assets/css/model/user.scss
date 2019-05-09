@@ -1,0 +1,13 @@
+
+// if the user is logged
+.user {
+  &_picture{
+    width: 70px;
+    height: 70px;
+    border-radius: 50px;
+  }
+  &_infos{
+    margin: 20%;
+    color: #000;
+  }
+}
