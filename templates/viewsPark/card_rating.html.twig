@@ -1,0 +1,26 @@
+<div class="rate_card_container">
+    <div class="rate_card_border">
+        <div class="rate_crad_user">
+            {{ rating.user.firstname ~ ' ' ~ rating.user.lastname }}
+        </div>
+        <div class="rate_card_rate-global">
+            <p>{{ 'note générale '|upper ~ rating.notePark }}</p>
+        </div>
+        {% if rating.comment %}
+            <div class="rate_card_comment_container">
+                <div class="rate_card_comment">{{ rating.comment }}</div>
+            </div>
+        {% else %}
+{# if there is no  comment don't dispay it #}
+        {% endif %}
+        <div class="rate_card_rate-access">
+            <p>{{ 'accessibilité '|upper ~ rating.noteAccess }}</p>
+        </div>
+        <div class="rate_card_rate-cleaning">
+            <p>{{ 'propreté '|upper ~ rating.noteCleaning }}</p>
+        </div>
+        <div class="rate_card_rate-price">
+            <p>{{ 'rapport qualité/prix '|upper ~ rating.notePrice }}</p>
+        </div>
+    </div>
+</div>

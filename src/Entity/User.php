@@ -99,6 +99,10 @@ class User implements UserInterface
      */
     private $parking;
 
+    /**
+     * @ORM\OneToMany(targetEntity="ViewsPark", mappedBy="user")
+     */
+    private $viewsPark;
 
     /**
      * @ORM\OneToMany(targetEntity="Reservation", mappedBy="user")
@@ -348,14 +352,26 @@ class User implements UserInterface
         return $this->reservation;
     }
 
-    /**
-     * @param mixed $reservation
-     */
     public function setreservation($reservation): self
     {
         $this->reservation = $reservation;
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getViewsPark()
+    {
+        return $this->viewsPark;
+    }
+
+    public function setViewsPark($viewsPark): self
+    {
+        $this->viewsPark = $viewsPark;
+        return $this;
+    }
+
 
 
 

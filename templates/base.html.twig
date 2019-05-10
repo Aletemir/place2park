@@ -7,6 +7,7 @@
     {% block stylesheets %}
         {{ encore_entry_link_tags('app') }}
     {% endblock %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/starrating/css/rating.css') }}" />
 </head>
 
 <body>
@@ -14,11 +15,9 @@
 {{ include('Default/footer.html.twig') }}
 {% block javascripts %}
     {{ encore_entry_script_tags('app') }}
-    <script src="../node_modules/bootstrap/js">
-
-    </script>
 {% endblock %}
-<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="{{ asset('bundles/starrating/js/rating.js') }}"></script>
 </body>
 
 </html>

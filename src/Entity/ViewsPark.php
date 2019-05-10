@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use DateTime;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -9,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="views_park", uniqueConstraints={@ORM\UniqueConstraint(name="id_UNIQUE", columns={"id"})}, indexes={@ORM\Index(name="fk_views_park_parking1_idx", columns={"parking_id"}), @ORM\Index(name="fk_views_park_user1_idx", columns={"user_id"})})
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks()
  */
 class ViewsPark
 {
@@ -36,12 +39,18 @@ class ViewsPark
     private $comment;
 
     /**
-     * @var string
+     * @var DateTime
      *
-     * @ORM\Column(name="creation_date", type="string", length=255, nullable=false)
+     * @ORM\Column(name="created_at", type="datetime", length=255, nullable=false)
      */
-    private $creationDate;
+    private $createdAt;
 
+    /**
+     * @var DateTime|null
+     *
+     * @ORM\Column(name="update_at", type="datetime", length=255, nullable=true)
+     */
+    private $updateAt;
     /**
      * @var int|null
      *
@@ -76,7 +85,7 @@ class ViewsPark
     /**
      * @var User
      *
-     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="viewsPark")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      * })
@@ -102,7 +111,7 @@ class ViewsPark
     /**
      * @return int
      */
-    public function getNotePark(): int
+    public function getNotePark(): ?int
     {
         return $this->notePark;
     }
@@ -130,18 +139,47 @@ class ViewsPark
     }
 
     /**
-     * @return string
+     * @return DateTime
      */
-    public function getCreationDate(): string
+    public function getCreatedAt(): ?DateTimeInterface
     {
-        return $this->creationDate;
+        return $this->createdAt;
     }
 
-    public function setCreationDate(string $creationDate): self
+    public function setCreatedAt(DateTimeInterface $createdAt): self
     {
-        $this->creationDate = $creationDate;
-
+        $this->createdAt = $createdAt;
         return $this;
+    }
+
+    /**
+     * @return DateTime|null
+     */
+    public function getUpdateAt(): ?string
+    {
+        return $this->updateAt;
+    }
+
+    public function setUpdateAt(?string $updateAt): self
+    {
+        $this->updateAt = $updateAt;
+        return $this;
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function prePersist()
+    {
+        $this->createdAt = new DateTime();
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function preUpdate()
+    {
+        $this->setUpdateAt(new DateTime());
     }
 
     /**
@@ -207,7 +245,7 @@ class ViewsPark
     /**
      * @return User
      */
-    public function getUser(): User
+    public function getUser(): ?User
     {
         return $this->user;
     }
@@ -215,9 +253,10 @@ class ViewsPark
     public function setUser(User $user): self
     {
         $this->user = $user;
-
         return $this;
     }
+
+
 
 
 }

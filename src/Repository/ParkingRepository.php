@@ -13,7 +13,8 @@ class ParkingRepository extends EntityRepository
     {
         $qb = $this->createQueryBuilder('p');
 
-        $qb = $qb->select('p')->addSelect('MIN(d.price) AS price')
+        $qb = $qb->select('p')
+            ->addSelect('MIN(d.price) AS price')
             ->innerJoin('p.disponibilities', 'd')
             ->where($qb->expr()->gt('d.dateEnd', ':now'))
             ->orderBy('p.createdAt', 'DESC')

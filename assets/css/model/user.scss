@@ -2,12 +2,27 @@
 // if the user is logged
 .user {
   &_picture{
-    width: 70px;
-    height: 70px;
+    width: 100px;
+    height: 100px;
     border-radius: 50px;
   }
   &_infos{
-    margin: 20%;
-    color: #000;
+    color: #FFFFFF;
+    justify-content: flex-start;
+    width: 100%;
+  }
+  &_name p {
+    font-size: 30px;
+  }
+}
+
+.header {
+  &_button {
+    &_user {
+      &-profil {
+        height: 35px;
+
+      }
+    }
   }
 }

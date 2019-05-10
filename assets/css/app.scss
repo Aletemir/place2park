@@ -3,10 +3,16 @@
 @import "layout/header";
 @import "layout/footer";
 
+// component style
+@import "component/homepage";
+
 // model style
 @import "model/user";
 
-@import "type";
+// font import
+@import url('https://fonts.googleapis.com/css?family=Dosis');
+@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic');
+
 
 body {
   box-sizing: border-box;

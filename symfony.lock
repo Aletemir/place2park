@@ -2,6 +2,9 @@
     "behat/transliterator": {
         "version": "v1.2.0"
     },
+    "blackknight467/star-rating-bundle": {
+        "version": "v2.0.1"
+    },
     "curl/curl": {
         "version": "2.2.0"
     },
@@ -119,9 +122,6 @@
     },
     "fig/link-util": {
         "version": "1.0.0"
-    },
-    "fzaninotto/faker": {
-        "version": "v1.8.0"
     },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"

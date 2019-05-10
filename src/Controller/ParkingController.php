@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Parking;
 use App\Entity\User;
+use App\Entity\ViewsPark;
 use App\Form\ParkingType;
 use Curl\Curl;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -55,8 +56,14 @@ class   ParkingController extends BaseController
     public function show(Parking $parking)
     {
         $users = $this->getDoctrine()->getRepository(User::class)->findBy(['id' => $this->getUser()]);
+        $allRate = $this->getDoctrine()->getRepository(ViewsPark::class)->findBy(['parking' => $parking->getId()]);
+        $rateByUser = $this->getDoctrine()->getRepository(ViewsPark::class)->findOneBy(['user' => $this->getUser()]);
+        dump($allRate);
+        dump($rateByUser);
         return $this->render('parking/show.html.twig', [
             'parking' => $parking,
+            'ratings' => $allRate,
+            'userRate' => $rateByUser,
             'users' => $users
         ]);
     }

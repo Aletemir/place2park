@@ -64,8 +64,22 @@
     {% elseif app.user == false and app.user != parking.user.id %}
         <a href="{{ path('app_login') }}" class="btn btn-primary">Connectez vous pour réserver</a>
     {% else %}
-
+        {#   If the user is the parking's owner nothing appear to him #}
     {% endif %}
+    <br>
+    {#    TODO faire en sorte qu'n utilisateur ne puisse noter un parking qu'une fois et si l'utilisateur est connecter et s'il n'a pas commenté le parking et s'il a loué le parking : il aura accès au cta pour laisser son commentaire  #}
+    {% if app.user %}:
+        {#        if user is logged show the rating path #}
+        <a href="{{ path('new_rate_park', {'id' : parking.id}) }}">Rate park</a>
+    {% else %}
+        {#if the user isn't logged don't show the path  #}
+    {% endif %}
+    <br>
+    {% for rating in ratings %}
 
+        <article>
+            {{ include('viewsPark/card_rating.html.twig') }}
+        </article>
+    {% endfor %}
 {% endblock %}
 

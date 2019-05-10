@@ -13,7 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Parking
- *
  * @ORM\Table(name="parking", uniqueConstraints={@ORM\UniqueConstraint(name="id_UNIQUE", columns={"id"})}, indexes={@ORM\Index(name="fk_parking_type_idx", columns={"type_id"}), @ORM\Index(name="fk_parking_user1_idx", columns={"user_id"})})
  * @ORM\Entity(repositoryClass="App\Repository\ParkingRepository")
  * @Vich\Uploadable

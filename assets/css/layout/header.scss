@@ -17,6 +17,11 @@
 
   &_button-top {
     height: 95px;
+
+    &-right {
+      width: 275px;
+      flex-wrap: wrap;
+    }
   }
 
 

@@ -1,0 +1,49 @@
+.main {
+  &_homepage {
+    &_container {
+      &-top {
+        height: 350px;
+      }
+
+      &-color-e8faff {
+        background-color: #e8faff;
+      }
+
+      &-color-cdd2ff {
+        background-color: rgba(205, 210, 255, 0.36);
+      }
+    }
+
+
+    &_content {
+      &_title {
+        height: 120px;
+
+        & h2 {
+          font-family: 'Dosis', sans-serif;
+          font-size: 45px;
+        }
+      }
+    }
+  }
+
+  &_block {
+    &_text-right {
+      & p {
+        font-size: 21px;
+        font-family: 'Nanum Gothic', sans-serif;;
+      }
+    }
+  }
+
+  &_content {
+    &_middle {
+      &_image {
+        height: 250px;
+        width: 250px;
+      }
+    }
+  }
+}
+
+
