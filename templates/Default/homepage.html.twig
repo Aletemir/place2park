@@ -52,9 +52,13 @@
 
             <div class="main_homepage_container-color-cdd2ff w-100">
                 <div class="main_homepage_container_middle d-flex flex-wrap  ">
-                    <div class="main_title-top-left">{{ 'pourquoi déposer une annonce ?'|upper }}</div>
+                    <div class="block_around_title d-flex justify-content-center w-100 ">
+                        <div class="main_title-top-left w-75">
+                            <p>{{ 'pourquoi déposer une annonce ?'|upper }}</p>
+                        </div>
+                    </div>
                     <div class="main_content_middle_image"><img src="{{ asset('build/images/parking.png') }}" alt="flat icon panneau parking rouge"></div>
-                    <div class="main_content_middle_text">Vous avez une place de parking innutile, une cour qui ne vous sert pas la journée, vous voyez cet espace vacant comme un manque à gagner ? Mettez en location votre place pour rendre service à un locataire le tout en arrondissant vos fin de mois ! Grâce au chat vous pouvez prendre contact avec le possible locataire et grâce au système de paiement en ligne, vous êtes sûre d'être payé !</div>
+                    <div class="main_content_middle_text">Vous avez une place de parking innutile, une cour qui ne vous sert pas la journée, vous voyez cet espace vacant comme un manque à gagner ? Mettez en location votre place pour rendre service à un locataire le tout en arrondissant vos fin de mois ! Grâce la messagerie vous pouvez prendre contact avec le possible locataire et grâce au système de paiement en ligne, vous êtes sûre d'être payé !</div>
                     {% if app.user %}
                         <div class="main_homepage_button-cta"><a href="{{ path('new_parking') }}">{{ 'déposer une annonce'|upper }}</a></div>
                     {% else %}

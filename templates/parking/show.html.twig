@@ -35,6 +35,7 @@
 
     {% for user in users %}
         {% if user.id == parking.user.id %}
+
             <a href="{{ path('parking_edit', {'id' : parking.id}) }}" class="btn btn-primary">Modifier votre annonce</a>
         {% endif %}
     {% endfor %}
@@ -68,15 +69,14 @@
     {% endif %}
     <br>
     {#    TODO faire en sorte qu'n utilisateur ne puisse noter un parking qu'une fois et si l'utilisateur est connecter et s'il n'a pas commenté le parking et s'il a loué le parking : il aura accès au cta pour laisser son commentaire  #}
-    {% if app.user %}:
+    {% if app.user and app.user.id != userRate.user.id %}:
         {#        if user is logged show the rating path #}
-        <a href="{{ path('new_rate_park', {'id' : parking.id}) }}">Rate park</a>
+        <a href="{{ path('new_rate_park', {'id' : parking.id }) }}">Rate park</a>
     {% else %}
         {#if the user isn't logged don't show the path  #}
     {% endif %}
     <br>
     {% for rating in ratings %}
-
         <article>
             {{ include('viewsPark/card_rating.html.twig') }}
         </article>

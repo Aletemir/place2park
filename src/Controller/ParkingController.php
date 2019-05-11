@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Disponibility;
 use App\Entity\Parking;
 use App\Entity\User;
 use App\Entity\ViewsPark;
+use App\Form\DisponibilityType;
 use App\Form\ParkingType;
 use Curl\Curl;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -33,7 +35,8 @@ class   ParkingController extends BaseController
 //         TODO IMPORTANT have to get the adress with longitude and latitude /!\
         $curl->setOpt(CURLOPT_RETURNTRANSFER, TRUE);
         $curl->setOpt(CURLOPT_SSL_VERIFYPEER, FALSE);
-        $curl->get("https://api-adresse.data.gouv.fr/search", ["q" => $this->getUser()->getAdress()]);
+        // TODO find how to set the adress on parameter
+        $curl->get("https://api-adresse.data.gouv.fr/search/q" . $this->getUser()->getAdress() . "&autocomplete=1");
 //        dump(json_decode($curl->response));die
 
         $form = $this->createForm(ParkingType::class, $parking);
@@ -67,20 +70,6 @@ class   ParkingController extends BaseController
             'users' => $users
         ]);
     }
-
-//
-//    /**
-//     * @Route("/user/{id}" , name="show_one_park_by_user")
-//     */
-//    public function showOneParkOfUser(Parking $parking)
-//    {
-//        $users = $this->getDoctrine()->getRepository(User::class)->findBy(['id' => $this->getUser()]);
-//        dump($parking);
-//        return $this->render('parking/show.html.twig', [
-//            'parking' => $parking,
-//            'users'=> $user,
-//            ]);
-//    }
 
     /**
      * @Route("/parks" , name="show_parks")
@@ -133,17 +122,18 @@ class   ParkingController extends BaseController
      */
     public function edit(Request $request,Parking $parking): Response
     {
-        $form = $this->createForm(ParkingType::class, $parking);
-        $form->handleRequest($request);
+        $formParking = $this->createForm(ParkingType::class, $parking);
 
-        if ($form->isSubmitted() && $form->isValid()){
+        $formParking->handleRequest($request);
+
+        if ( $formParking->isSubmitted() && $formParking->isValid() ){
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('show_park', ['id' => $parking->getId()]);
         }
         return $this->render('parking/edit.html.twig', [
             'parking' => $parking,
-            'formParking'=> $form->createView()
+            'formParking'=> $formParking->createView(),
         ]);
     }
 
@@ -157,7 +147,7 @@ class   ParkingController extends BaseController
             $em->remove($parking);
             $em->flush();
         }
-        return $this->redirectToRoute();
+        return $this->redirectToRoute('user_index');
     }
 
 

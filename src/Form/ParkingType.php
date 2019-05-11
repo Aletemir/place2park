@@ -44,10 +44,7 @@ class ParkingType extends AbstractType
             ->add('street', TextType::class, [
                 'label' => 'Rue'
             ])
-//            TODO voir pour le prix dans le formulaire edit du parking
-//            ->add('price', IntegerType::class, [
-//                'label' => 'Prix',
-//            ])
+
         ;
     }
 

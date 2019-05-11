@@ -6,12 +6,16 @@
 
 {% block body %}
     <h1>Edit parking</h1>
-{#    {{ form_start(formParking) }}#}
-{#{{ form_widget(formParking) }}#}
-{#    <button class="btn btn-primary">Editer</button>#}
-{#    {{ form_end(formParking) }}#}
-    {{ include('parking/_editForm.html.twig') }}
+    {{ form_start(formParking) }}
+    {{ form_widget(formParking) }}
+    <button class="btn btn-primary">Editer</button>
+    {{ form_end(formParking) }}
+{#    {{ include('parking/_editForm.html.twig') }}#}
+    {{ form_start(formDispo) }}
+    {{ form_widget(formDispo) }}
+    <button class="btn btn-primary">Editer</button>
 
+    {{ form_end() }}
 
 
 {% endblock %}

@@ -7,7 +7,9 @@ use App\Entity\Parking;
 use App\Entity\Reservation;
 use App\Form\ReservationType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ReservationController extends AbstractController
@@ -24,11 +26,13 @@ class ReservationController extends AbstractController
 
     /**
      * @Route("/reservation/{parkingName}", name="add_new_reservation")
+     * @param Request $request
+     * @return RedirectResponse|Response
      */
     public function new(Request $request)
     {
-
         $reservation = new Reservation();
+        $disponibility =  $reservation->getDisponibilities();
         $reservation->setUser($this->getUser());
 
 
@@ -45,6 +49,7 @@ class ReservationController extends AbstractController
         }
         return $this->render('reservation/new_reservation.html.twig', [
             'form'=>$form->createView(),
+            'dispo' => $disponibility,
         ]);
     }
 }

@@ -34,7 +34,6 @@ class DisponibilityController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($parkDispo);
             $em->flush();
-//            TODO this route have to redirect to user list of park
             return $this->redirectToRoute('show_parks');
         }
         return $this->render('disponibility/_new_disponibility.html.twig', ['form' => $form->createView()]);
@@ -53,20 +52,4 @@ class DisponibilityController extends AbstractController
         ]);
     }
 
-    public function edit(Request $request, Disponibility $disponibility) : Response
-    {
-        $form = $this->createForm(DisponibilityType::class, $disponibility);
-        $form->handleRequest($request);
-
-        if($form->isSubmitted() && $form->isValid()){
-            $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('parking_edit' ,['id' => $disponibility->getId()]);
-        }
-
-        return $this->render('parking/edit.html.twig', [
-            'disponibility' => $disponibility,
-            'disponibilite' => $form->createView(),
-        ]);
-    }
 }

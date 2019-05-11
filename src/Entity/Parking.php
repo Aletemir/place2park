@@ -37,7 +37,7 @@ class Parking
     private $title;
 
     /**
-     *  @var string|null
+     * @var string|null
      *
      * @ORM\Column(name="picture", type="string", length=255, nullable=true)
      *
@@ -65,8 +65,8 @@ class Parking
      */
     private $city;
 
-//     TODO : include the postal code
-
+//     TODO make update :
+    private $zipCode;
     /**
      * @var string
      *
@@ -362,7 +362,8 @@ class Parking
         return $this;
     }
 
-    public function getPrice() {
+    public function getPrice()
+    {
         $price = null;
         foreach ($this->getDisponibilities() as $disponibility) {
             if (!$price || $disponibility->getPrice() < $price) {
@@ -379,6 +380,7 @@ class Parking
         $this->setPrice();
         return $this;
     }
+
     /**
      * @ORM\PrePersist()
      */

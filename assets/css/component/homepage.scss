@@ -44,6 +44,18 @@
       }
     }
   }
+
+  &_title {
+    &-top {
+      &-left {
+        & p {
+          font-size: 21px;
+          font-family: 'Nanum Gothic', sans-serif;;
+          margin-top: 20px;
+        }
+      }
+    }
+  }
 }
 
 
