@@ -69,7 +69,7 @@
     {% endif %}
     <br>
     {#    TODO faire en sorte qu'n utilisateur ne puisse noter un parking qu'une fois et si l'utilisateur est connecter et s'il n'a pas commenté le parking et s'il a loué le parking : il aura accès au cta pour laisser son commentaire  #}
-    {% if app.user and app.user.id != userRate.user.id %}:
+    {% if app.user  %}:
         {#        if user is logged show the rating path #}
         <a href="{{ path('new_rate_park', {'id' : parking.id }) }}">Rate park</a>
     {% else %}

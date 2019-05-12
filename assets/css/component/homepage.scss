@@ -1,16 +1,16 @@
 .main {
   &_homepage {
     &_container {
-      &-top {
-        height: 350px;
-      }
-
       &-color-e8faff {
         background-color: #e8faff;
       }
 
       &-color-cdd2ff {
         background-color: rgba(205, 210, 255, 0.36);
+      }
+
+      &-top {
+        height: 350px;
       }
     }
 
@@ -38,17 +38,28 @@
 
   &_content {
     &_middle {
+      &_content {
+        height: 70%;
+      }
+
       &_image {
         height: 250px;
         width: 250px;
       }
+
+      &_text {
+        font-family: 'Nanum Gothic', sans-serif;
+        font-size: 18px;
+      }
+
     }
+
   }
 
   &_title {
     &-top {
       &-left {
-        & p {
+        &-middle {
           font-size: 21px;
           font-family: 'Nanum Gothic', sans-serif;;
           margin-top: 20px;

@@ -2,17 +2,16 @@
 
 {% block body %}
     {{ form_start(form) }}
-    
+
     {{ form_row(form.dateStart) }}
-    
+
     {{ form_row(form.dateEnd) }}
-    {% if  %}
-        
+    {% if form.dateEnd > dispo.dateEnd %}
+        <button class="btn" disabled>Envoyer</button>
+    {% else %}
+        <button class="btn" disabled>Envoyer</button>
     {% endif %}
     <br>
-    <button class="btn">Envoyer</button>
     {{ form_end(form) }}
-
-
 
 {% endblock %}

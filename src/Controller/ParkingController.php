@@ -61,7 +61,9 @@ class   ParkingController extends BaseController
         $users = $this->getDoctrine()->getRepository(User::class)->findBy(['id' => $this->getUser()]);
         $allRate = $this->getDoctrine()->getRepository(ViewsPark::class)->findBy(['parking' => $parking->getId()]);
         $rateByUser = $this->getDoctrine()->getRepository(ViewsPark::class)->findOneBy(['user' => $this->getUser()]);
+//        dump($users); die();
         dump($allRate);
+
         dump($rateByUser);
         return $this->render('parking/show.html.twig', [
             'parking' => $parking,

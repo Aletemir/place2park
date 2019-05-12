@@ -1,0 +1,22 @@
+.main {
+  &_homepage {
+    &_button {
+      &-cta {
+        align-items: center;
+        background-color: #475eff;
+        border-radius: 10px;
+        bottom: 24px;
+        display: flex;
+        height: 50px;
+        left: 1210px;
+        justify-content: center;
+        position: relative;
+        width: 277px;
+      }
+    }
+  }
+}
+
+.button_homepage_cta {
+  color: whitesmoke;
+}
